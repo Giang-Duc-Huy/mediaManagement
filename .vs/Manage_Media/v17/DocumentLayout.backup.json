@@ -1,0 +1,167 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\manage_media\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|c:\\users\\admin\\source\\repos\\manage_media\\manage_media\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\manage_media\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\manage_media\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\manage_media\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|c:\\users\\admin\\source\\repos\\manage_media\\manage_media\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|c:\\users\\admin\\source\\repos\\manage_media\\manage_media\\manage_media.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\manage_media.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\manage_media\\channel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\channel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\manage_media\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6DC98D25-DD92-477A-99CF-C8BFA4B61FDE}|Manage_Media\\Manage_Media.csproj|solutionrelative:manage_media\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Loading.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Loading.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Loading.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Loading.cs [Design]",
+              "RelativeToolTip": "Manage_Media\\Loading.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T13:20:31.462Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Main.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Main.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Main.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Main.cs [Design]",
+              "RelativeToolTip": "Manage_Media\\Main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T03:23:43.658Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Manage_Media.csproj",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Manage_Media.csproj",
+              "RelativeDocumentMoniker": "Manage_Media\\Manage_Media.csproj",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Manage_Media.csproj",
+              "RelativeToolTip": "Manage_Media\\Manage_Media.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-03T03:20:53.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Main.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Main.Designer.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Main.Designer.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Main.Designer.cs",
+              "RelativeToolTip": "Manage_Media\\Main.Designer.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAYwJ0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T03:20:13.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Main.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Main.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Main.cs",
+              "RelativeToolTip": "Manage_Media\\Main.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T03:08:46.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Channel.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Channel.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Channel.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Channel.cs [Design]",
+              "RelativeToolTip": "Manage_Media\\Channel.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T02:17:19.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Staff.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Staff.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Staff.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Staff.cs [Design]",
+              "RelativeToolTip": "Manage_Media\\Staff.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T16:06:57.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Dashboard.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Dashboard.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Dashboard.cs [Design]",
+              "RelativeToolTip": "Manage_Media\\Dashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T15:44:35.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Login.cs",
+              "RelativeDocumentMoniker": "Manage_Media\\Login.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\Manage_Media\\Manage_Media\\Login.cs [Design]",
+              "RelativeToolTip": "Manage_Media\\Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T15:32:00.669Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
