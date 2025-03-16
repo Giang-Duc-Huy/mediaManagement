@@ -50,12 +50,18 @@
         }
         private void Login_Button_Click(object sender, EventArgs e)
         {
-            Main m = new Main();
-            this.Hide();
-            m.ShowDialog();
-            this.Close();
+            if (Login_TxtBox.Text == "" || Password_TxtBox.Text == "")
+            {
+                MessageBox.Show("Cần điền đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Main m = new Main();
+                this.Hide();
+                m.ShowDialog();
+                this.Close();
+            }    
         }
-
         private void Check_Pass_CheckedChanged(object sender, EventArgs e)
         {
             Password_TxtBox.PasswordChar = Check_Pass.Checked ? '\0' : '*';
