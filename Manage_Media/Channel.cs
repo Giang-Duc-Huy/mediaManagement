@@ -53,7 +53,7 @@ namespace Manage_Media
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void LoadData()
@@ -72,7 +72,7 @@ namespace Manage_Media
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu JSON: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Lỗi khi tải dữ liệu JSON: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 channels = new List<AllChannel>(); // Nếu lỗi, khởi tạo danh sách mới
             }
         }
@@ -126,14 +126,14 @@ namespace Manage_Media
                 string.IsNullOrWhiteSpace(producer_Txt.Text) ||
                 category_Cbb.SelectedIndex == -1)
             {
-                MessageBox.Show("Cần điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Cần điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Kiểm tra Duration có hợp lệ không
             if (!int.TryParse(duration_Txt.Text, out int duration) || duration <= 0)
             {
-                MessageBox.Show("Duration phải là số dương!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Duration phải là số dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -152,7 +152,7 @@ namespace Manage_Media
             channels.Add(CurrentChannel);
             SaveData();
             LoadDgv();
-            MessageBox.Show("Thêm kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Thêm kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
         public void LoadDgv()
@@ -165,7 +165,7 @@ namespace Manage_Media
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một kênh để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Vui lòng chọn một kênh để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -193,7 +193,7 @@ namespace Manage_Media
                 }
                 else
                 {
-                    MessageBox.Show("Duration phải là số dương!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Notify.ShowMessage("Duration phải là số dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -202,20 +202,46 @@ namespace Manage_Media
 
                 SaveData();
                 LoadDgv();
-                MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Notify.ShowMessage("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
             else
             {
-                MessageBox.Show("Không tìm thấy kênh để cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Không tìm thấy kênh để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                Notify.ShowMessage("Vui lòng chọn một kênh để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            string idToDelete = Convert.ToString(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+
+            DialogResult result = Notify.ShowMessage("Bạn có chắc chắn muốn xóa kênh này?", "Thông báo",
+                                                  MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                // Tìm và xóa kênh không dùng Lambda
+                for (int i = 0; i < channels.Count; i++)
+                {
+                    if (channels[i].ID == idToDelete)
+                    {
+                        channels.RemoveAt(i);
+                        break; // Dừng ngay sau khi xóa
+                    }
+                }
+
+                SaveData(); // Lưu lại dữ liệu sau khi xóa
+                LoadDgv();  // Cập nhật DataGridView
+
+                Notify.ShowMessage("Xóa kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             ClearFields();

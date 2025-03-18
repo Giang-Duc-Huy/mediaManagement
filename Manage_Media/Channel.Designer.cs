@@ -32,7 +32,9 @@
             dataGridView1 = new DataGridView();
             label1 = new Label();
             panel3 = new Panel();
-            pictureBox1 = new PictureBox();
+            panel7 = new Panel();
+            duration_Txt = new TextBox();
+            label5 = new Label();
             panel9 = new Panel();
             schedule_Dtp = new DateTimePicker();
             label7 = new Label();
@@ -43,9 +45,6 @@
             panel8 = new Panel();
             category_Cbb = new ComboBox();
             label6 = new Label();
-            panel7 = new Panel();
-            duration_Txt = new TextBox();
-            label5 = new Label();
             panel6 = new Panel();
             producer_Txt = new TextBox();
             label4 = new Label();
@@ -55,16 +54,17 @@
             panel4 = new Panel();
             channelID_Txt = new TextBox();
             label2 = new Label();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel7.SuspendLayout();
             panel9.SuspendLayout();
             panel8.SuspendLayout();
-            panel7.SuspendLayout();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -73,17 +73,17 @@
             panel1.Controls.Add(dataGridView1);
             panel1.Location = new Point(18, 343);
             panel1.Name = "panel1";
-            panel1.Size = new Size(922, 283);
+            panel1.Size = new Size(923, 285);
             panel1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Left;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 23);
+            dataGridView1.Location = new Point(17, 21);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(872, 244);
+            dataGridView1.Size = new Size(885, 248);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
@@ -111,19 +111,40 @@
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(18, 62);
+            panel3.Location = new Point(18, 52);
             panel3.Name = "panel3";
-            panel3.Size = new Size(687, 266);
+            panel3.Size = new Size(687, 276);
             panel3.TabIndex = 1;
             // 
-            // pictureBox1
+            // panel7
             // 
-            pictureBox1.BackColor = SystemColors.ControlDark;
-            pictureBox1.Location = new Point(721, 62);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(219, 266);
-            pictureBox1.TabIndex = 9;
-            pictureBox1.TabStop = false;
+            panel7.Controls.Add(duration_Txt);
+            panel7.Controls.Add(label5);
+            panel7.Location = new Point(410, 82);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(258, 43);
+            panel7.TabIndex = 2;
+            // 
+            // duration_Txt
+            // 
+            duration_Txt.BorderStyle = BorderStyle.FixedSingle;
+            duration_Txt.Cursor = Cursors.IBeam;
+            duration_Txt.Font = new Font("Segoe UI", 10F);
+            duration_Txt.Location = new Point(100, 4);
+            duration_Txt.Name = "duration_Txt";
+            duration_Txt.PlaceholderText = "2";
+            duration_Txt.Size = new Size(149, 34);
+            duration_Txt.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label5.Location = new Point(6, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(92, 25);
+            label5.TabIndex = 0;
+            label5.Text = "Duration:";
             // 
             // panel9
             // 
@@ -153,7 +174,7 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.SandyBrown;
+            button4.BackColor = Color.DarkOrange;
             button4.BackgroundImageLayout = ImageLayout.None;
             button4.FlatAppearance.BorderColor = Color.SaddleBrown;
             button4.FlatStyle = FlatStyle.Flat;
@@ -168,7 +189,7 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.SandyBrown;
+            button3.BackColor = Color.DarkOrange;
             button3.BackgroundImageLayout = ImageLayout.None;
             button3.FlatAppearance.BorderColor = Color.SaddleBrown;
             button3.FlatStyle = FlatStyle.Flat;
@@ -183,7 +204,7 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.SandyBrown;
+            button2.BackColor = Color.DarkOrange;
             button2.BackgroundImageLayout = ImageLayout.None;
             button2.FlatAppearance.BorderColor = Color.SaddleBrown;
             button2.FlatStyle = FlatStyle.Flat;
@@ -198,7 +219,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.SandyBrown;
+            button1.BackColor = Color.DarkOrange;
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.FlatAppearance.BorderColor = Color.SaddleBrown;
             button1.FlatStyle = FlatStyle.Flat;
@@ -238,36 +259,6 @@
             label6.Size = new Size(95, 25);
             label6.TabIndex = 2;
             label6.Text = "Category:";
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(duration_Txt);
-            panel7.Controls.Add(label5);
-            panel7.Location = new Point(410, 82);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(258, 43);
-            panel7.TabIndex = 2;
-            // 
-            // duration_Txt
-            // 
-            duration_Txt.BorderStyle = BorderStyle.FixedSingle;
-            duration_Txt.Cursor = Cursors.IBeam;
-            duration_Txt.Font = new Font("Segoe UI", 10F);
-            duration_Txt.Location = new Point(100, 4);
-            duration_Txt.Name = "duration_Txt";
-            duration_Txt.PlaceholderText = "2";
-            duration_Txt.Size = new Size(149, 34);
-            duration_Txt.TabIndex = 1;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(6, 9);
-            label5.Name = "label5";
-            label5.Size = new Size(92, 25);
-            label5.TabIndex = 0;
-            label5.Text = "Duration:";
             // 
             // panel6
             // 
@@ -359,6 +350,15 @@
             label2.TabIndex = 0;
             label2.Text = "Channel ID:";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ControlDark;
+            pictureBox1.Location = new Point(721, 52);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(220, 276);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
             // Channel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -373,19 +373,19 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

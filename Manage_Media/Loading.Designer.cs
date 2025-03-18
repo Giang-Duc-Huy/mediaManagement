@@ -43,11 +43,11 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.SandyBrown;
+            panel1.BackColor = Color.DarkOrange;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(1, 1);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(904, 566);
             panel1.TabIndex = 0;

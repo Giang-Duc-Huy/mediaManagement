@@ -70,3 +70,4 @@ D:\Medie_Management\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\ref\Manage
 D:\Medie_Management\OOP_Project\Manage_Media\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 D:\Medie_Management\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.csproj.AssemblyReference.cache
 D:\Medie_Management\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_M.86289925.Up2Date
+D:\Medie_Management\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.Notify.resources

@@ -43,16 +43,21 @@
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            DialogResult result = Notify.ShowMessage("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                Application.ExitThread();
             }
         }
         private void Login_Button_Click(object sender, EventArgs e)
         {
             if (Login_TxtBox.Text == "" || Password_TxtBox.Text == "")
             {
-                MessageBox.Show("Cần điền đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Cần điền đủ chỗ trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -60,7 +65,7 @@
                 this.Hide();
                 m.ShowDialog();
                 this.Close();
-            }    
+            }
         }
         private void Check_Pass_CheckedChanged(object sender, EventArgs e)
         {
@@ -73,6 +78,11 @@
             //{
             //    Password_TxtBox.UseSystemPasswordChar = true;
             //}
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

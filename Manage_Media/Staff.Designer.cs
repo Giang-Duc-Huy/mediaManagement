@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            update_Btn = new Button();
-            add_Btn = new Button();
-            clear_Btn = new Button();
-            delete_Btn = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             panel8 = new Panel();
             address_Txt = new TextBox();
             label5 = new Label();
+            clear_Btn = new Button();
             panel7 = new Panel();
             phone_Txt = new TextBox();
             label4 = new Label();
+            add_Btn = new Button();
             panel6 = new Panel();
             name_Txt = new TextBox();
             label3 = new Label();
+            update_Btn = new Button();
             panel5 = new Panel();
             staffID_Txt = new TextBox();
             label2 = new Label();
+            delete_Btn = new Button();
             panel4 = new Panel();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
             label1 = new Label();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             panel1.SuspendLayout();
             panel8.SuspendLayout();
             panel7.SuspendLayout();
@@ -72,58 +72,19 @@
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(delete_Btn);
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(16, 52);
+            panel1.Location = new Point(18, 52);
             panel1.Name = "panel1";
             panel1.Size = new Size(655, 234);
             panel1.TabIndex = 0;
             // 
-            // update_Btn
+            // flowLayoutPanel1
             // 
-            update_Btn.BackColor = Color.SandyBrown;
-            update_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
-            update_Btn.FlatStyle = FlatStyle.Flat;
-            update_Btn.Location = new Point(523, 125);
-            update_Btn.Name = "update_Btn";
-            update_Btn.Size = new Size(112, 38);
-            update_Btn.TabIndex = 10;
-            update_Btn.Text = "Update";
-            update_Btn.UseVisualStyleBackColor = false;
-            // 
-            // add_Btn
-            // 
-            add_Btn.BackColor = Color.SandyBrown;
-            add_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
-            add_Btn.FlatStyle = FlatStyle.Flat;
-            add_Btn.Location = new Point(396, 125);
-            add_Btn.Name = "add_Btn";
-            add_Btn.Size = new Size(112, 38);
-            add_Btn.TabIndex = 9;
-            add_Btn.Text = "Add";
-            add_Btn.UseVisualStyleBackColor = false;
-            // 
-            // clear_Btn
-            // 
-            clear_Btn.BackColor = Color.SandyBrown;
-            clear_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
-            clear_Btn.FlatStyle = FlatStyle.Flat;
-            clear_Btn.Location = new Point(523, 176);
-            clear_Btn.Name = "clear_Btn";
-            clear_Btn.Size = new Size(112, 38);
-            clear_Btn.TabIndex = 8;
-            clear_Btn.Text = "Clear";
-            clear_Btn.UseVisualStyleBackColor = false;
-            // 
-            // delete_Btn
-            // 
-            delete_Btn.BackColor = Color.SandyBrown;
-            delete_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
-            delete_Btn.FlatStyle = FlatStyle.Flat;
-            delete_Btn.Location = new Point(396, 176);
-            delete_Btn.Name = "delete_Btn";
-            delete_Btn.Size = new Size(112, 38);
-            delete_Btn.TabIndex = 7;
-            delete_Btn.Text = "Delete";
-            delete_Btn.UseVisualStyleBackColor = false;
+            flowLayoutPanel1.BackColor = SystemColors.ControlDark;
+            flowLayoutPanel1.ForeColor = Color.Violet;
+            flowLayoutPanel1.Location = new Point(396, 28);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(239, 82);
+            flowLayoutPanel1.TabIndex = 11;
             // 
             // panel8
             // 
@@ -133,7 +94,6 @@
             panel8.Name = "panel8";
             panel8.Size = new Size(366, 33);
             panel8.TabIndex = 6;
-            //panel8.Paint += this.panel8_Paint;
             // 
             // address_Txt
             // 
@@ -155,6 +115,18 @@
             label5.TabIndex = 0;
             label5.Text = "Address:";
             // 
+            // clear_Btn
+            // 
+            clear_Btn.BackColor = Color.DarkOrange;
+            clear_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
+            clear_Btn.FlatStyle = FlatStyle.Flat;
+            clear_Btn.Location = new Point(523, 176);
+            clear_Btn.Name = "clear_Btn";
+            clear_Btn.Size = new Size(112, 38);
+            clear_Btn.TabIndex = 8;
+            clear_Btn.Text = "Clear";
+            clear_Btn.UseVisualStyleBackColor = false;
+            // 
             // panel7
             // 
             panel7.Controls.Add(phone_Txt);
@@ -163,7 +135,6 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(366, 33);
             panel7.TabIndex = 5;
-            //panel7.Paint += this.panel7_Paint;
             // 
             // phone_Txt
             // 
@@ -184,6 +155,19 @@
             label4.Size = new Size(63, 21);
             label4.TabIndex = 0;
             label4.Text = "Phone:";
+            // 
+            // add_Btn
+            // 
+            add_Btn.BackColor = Color.DarkOrange;
+            add_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
+            add_Btn.FlatStyle = FlatStyle.Flat;
+            add_Btn.Location = new Point(396, 125);
+            add_Btn.Name = "add_Btn";
+            add_Btn.Size = new Size(112, 38);
+            add_Btn.TabIndex = 9;
+            add_Btn.Text = "Add";
+            add_Btn.UseVisualStyleBackColor = false;
+            add_Btn.Click += add_Btn_Click;
             // 
             // panel6
             // 
@@ -214,6 +198,18 @@
             label3.Size = new Size(60, 21);
             label3.TabIndex = 0;
             label3.Text = "Name:";
+            // 
+            // update_Btn
+            // 
+            update_Btn.BackColor = Color.DarkOrange;
+            update_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
+            update_Btn.FlatStyle = FlatStyle.Flat;
+            update_Btn.Location = new Point(523, 125);
+            update_Btn.Name = "update_Btn";
+            update_Btn.Size = new Size(112, 38);
+            update_Btn.TabIndex = 10;
+            update_Btn.Text = "Update";
+            update_Btn.UseVisualStyleBackColor = false;
             // 
             // panel5
             // 
@@ -246,6 +242,18 @@
             label2.Text = "Staff ID:";
             label2.Click += label2_Click;
             // 
+            // delete_Btn
+            // 
+            delete_Btn.BackColor = Color.DarkOrange;
+            delete_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
+            delete_Btn.FlatStyle = FlatStyle.Flat;
+            delete_Btn.Location = new Point(396, 176);
+            delete_Btn.Name = "delete_Btn";
+            delete_Btn.Size = new Size(112, 38);
+            delete_Btn.TabIndex = 7;
+            delete_Btn.Text = "Delete";
+            delete_Btn.UseVisualStyleBackColor = false;
+            // 
             // panel4
             // 
             panel4.BackColor = SystemColors.ActiveBorder;
@@ -261,7 +269,7 @@
             panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(dataGridView1);
             panel2.ForeColor = Color.White;
-            panel2.Location = new Point(16, 304);
+            panel2.Location = new Point(18, 304);
             panel2.Name = "panel2";
             panel2.Size = new Size(923, 325);
             panel2.TabIndex = 1;
@@ -281,21 +289,12 @@
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(16, 14);
+            label1.Location = new Point(18, 18);
             label1.Name = "label1";
             label1.Padding = new Padding(28, 9, 0, 0);
             label1.Size = new Size(152, 46);
             label1.TabIndex = 2;
             label1.Text = "All Staff";
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.BackColor = SystemColors.ControlDark;
-            flowLayoutPanel1.ForeColor = Color.Violet;
-            flowLayoutPanel1.Location = new Point(396, 28);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(239, 82);
-            flowLayoutPanel1.TabIndex = 11;
             // 
             // Staff
             // 
@@ -309,7 +308,6 @@
             ForeColor = Color.Aquamarine;
             Name = "Staff";
             Size = new Size(962, 644);
-            //Load += this.Staff_Load;
             panel1.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel8.PerformLayout();

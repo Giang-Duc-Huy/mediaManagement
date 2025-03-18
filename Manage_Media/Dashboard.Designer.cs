@@ -53,7 +53,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.SandyBrown;
+            panel2.BackColor = Color.DarkOrange;
             panel2.Controls.Add(label2);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
@@ -96,7 +96,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.SandyBrown;
+            panel3.BackColor = Color.DarkOrange;
             panel3.Controls.Add(label3);
             panel3.Controls.Add(pictureBox2);
             panel3.Controls.Add(label4);
@@ -139,7 +139,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.SandyBrown;
+            panel4.BackColor = Color.DarkOrange;
             panel4.Controls.Add(label5);
             panel4.Controls.Add(pictureBox3);
             panel4.Controls.Add(label6);
@@ -191,13 +191,13 @@
             panel1.Size = new Size(926, 196);
             panel1.TabIndex = 0;
             // 
-            // Channel
+            // Dashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
             Controls.Add(panel1);
-            Name = "Channel";
+            Name = "Dashboard";
             Size = new Size(962, 644);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
