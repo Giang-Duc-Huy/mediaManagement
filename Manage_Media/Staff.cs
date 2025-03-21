@@ -30,7 +30,24 @@ namespace Manage_Media
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = staffList;
+
+            // Đảm bảo các cột hiển thị đúng kích thước
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Thiết lập kiểu chữ để tránh lỗi hiển thị
+            dataGridView1.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Regular);
+
+            // Đảm bảo các cột hiển thị đúng tên và dữ liệu
+            dataGridView1.Columns["StaffID"].HeaderText = "Staff ID";
+            dataGridView1.Columns["Name"].HeaderText = "Name";
+            dataGridView1.Columns["Phone"].HeaderText = "Phone";
+            dataGridView1.Columns["Address"].HeaderText = "Address";
+            dataGridView1.Columns["ImagePath"].HeaderText = "Image Path";
+
+            // Đảm bảo các cột hiển thị đúng kích thước
+            dataGridView1.AutoResizeColumns();
         }
+
 
         private void LoadData()
         {
@@ -180,31 +197,6 @@ namespace Manage_Media
             ClearFields();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                staffID_Txt.Text = row.Cells["StaffID"].Value.ToString();
-                name_Txt.Text = row.Cells["Name"].Value.ToString();
-                phone_Txt.Text = row.Cells["Phone"].Value.ToString();
-                address_Txt.Text = row.Cells["Address"].Value.ToString();
-
-                // Hiển thị ảnh nếu có
-                string imagePath = row.Cells["ImagePath"].Value?.ToString();
-                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
-                {
-                    pictureBox1.Image = Image.FromFile(imagePath);
-                    CurrentStaff.ImagePath = imagePath; // Lưu đường dẫn ảnh vào CurrentStaff
-                }
-                else
-                {
-                    pictureBox1.Image = null;
-                    CurrentStaff.ImagePath = null;
-                }
-            }
-        }
-
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
             // Mở hộp thoại chọn ảnh
@@ -215,5 +207,14 @@ namespace Manage_Media
                 CurrentStaff.ImagePath = imagePath; // Lưu đường dẫn ảnh vào CurrentStaff
             }
         }
+
+        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
     }
+
 }

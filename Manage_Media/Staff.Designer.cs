@@ -326,17 +326,18 @@
             panel2.Size = new Size(738, 260);
             panel2.TabIndex = 1;
             // 
-            // dataGridView1
             // 
-            dataGridView1.Anchor = AnchorStyles.Bottom;
+            // dataGridView1
+            dataGridView1.Anchor = AnchorStyles.Left;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 18);
-            dataGridView1.Margin = new Padding(2);
+            dataGridView1.Location = new Point(17, 21);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(708, 229);
-            dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.Size = new Size(885, 248);
+            dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_2;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
             // 
             // label1
             // 

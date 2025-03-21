@@ -71,19 +71,21 @@
             // 
             panel1.BackColor = SystemColors.Control;
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(18, 343);
+            panel1.Location = new Point(14, 274);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(923, 285);
+            panel1.Size = new Size(738, 228);
             panel1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Left;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(17, 21);
+            dataGridView1.Location = new Point(14, 17);
+            dataGridView1.Margin = new Padding(2, 2, 2, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(885, 248);
+            dataGridView1.Size = new Size(708, 198);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
@@ -91,10 +93,11 @@
             // 
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label1.Location = new Point(18, 18);
+            label1.Location = new Point(14, 14);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Padding = new Padding(6, 5, 0, 0);
-            label1.Size = new Size(152, 50);
+            label1.Padding = new Padding(5, 4, 0, 0);
+            label1.Size = new Size(122, 40);
             label1.TabIndex = 1;
             label1.Text = "All Channels";
             // 
@@ -111,18 +114,20 @@
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(18, 52);
+            panel3.Location = new Point(14, 42);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(687, 276);
+            panel3.Size = new Size(550, 221);
             panel3.TabIndex = 1;
             // 
             // panel7
             // 
             panel7.Controls.Add(duration_Txt);
             panel7.Controls.Add(label5);
-            panel7.Location = new Point(410, 82);
+            panel7.Location = new Point(328, 66);
+            panel7.Margin = new Padding(2, 2, 2, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(258, 43);
+            panel7.Size = new Size(206, 34);
             panel7.TabIndex = 2;
             // 
             // duration_Txt
@@ -130,19 +135,21 @@
             duration_Txt.BorderStyle = BorderStyle.FixedSingle;
             duration_Txt.Cursor = Cursors.IBeam;
             duration_Txt.Font = new Font("Segoe UI", 10F);
-            duration_Txt.Location = new Point(100, 4);
+            duration_Txt.Location = new Point(80, 3);
+            duration_Txt.Margin = new Padding(2, 2, 2, 2);
             duration_Txt.Name = "duration_Txt";
             duration_Txt.PlaceholderText = "2";
-            duration_Txt.Size = new Size(149, 34);
+            duration_Txt.Size = new Size(120, 30);
             duration_Txt.TabIndex = 1;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(6, 9);
+            label5.Location = new Point(5, 7);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(92, 25);
+            label5.Size = new Size(75, 20);
             label5.TabIndex = 0;
             label5.Text = "Duration:";
             // 
@@ -150,25 +157,28 @@
             // 
             panel9.Controls.Add(schedule_Dtp);
             panel9.Controls.Add(label7);
-            panel9.Location = new Point(23, 204);
+            panel9.Location = new Point(18, 163);
+            panel9.Margin = new Padding(2, 2, 2, 2);
             panel9.Name = "panel9";
-            panel9.Size = new Size(363, 43);
+            panel9.Size = new Size(290, 34);
             panel9.TabIndex = 8;
             // 
             // schedule_Dtp
             // 
-            schedule_Dtp.Location = new Point(111, 7);
+            schedule_Dtp.Location = new Point(89, 6);
+            schedule_Dtp.Margin = new Padding(2, 2, 2, 2);
             schedule_Dtp.Name = "schedule_Dtp";
-            schedule_Dtp.Size = new Size(249, 31);
+            schedule_Dtp.Size = new Size(200, 27);
             schedule_Dtp.TabIndex = 1;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(20, 12);
+            label7.Location = new Point(16, 10);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(85, 25);
+            label7.Size = new Size(68, 20);
             label7.TabIndex = 0;
             label7.Text = "Shedule:";
             // 
@@ -179,9 +189,10 @@
             button4.FlatAppearance.BorderColor = Color.SaddleBrown;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = Color.White;
-            button4.Location = new Point(556, 213);
+            button4.Location = new Point(445, 170);
+            button4.Margin = new Padding(2, 2, 2, 2);
             button4.Name = "button4";
-            button4.Size = new Size(112, 34);
+            button4.Size = new Size(90, 27);
             button4.TabIndex = 7;
             button4.Text = "Clear";
             button4.UseVisualStyleBackColor = false;
@@ -194,9 +205,10 @@
             button3.FlatAppearance.BorderColor = Color.SaddleBrown;
             button3.FlatStyle = FlatStyle.Flat;
             button3.ForeColor = Color.White;
-            button3.Location = new Point(556, 153);
+            button3.Location = new Point(445, 122);
+            button3.Margin = new Padding(2, 2, 2, 2);
             button3.Name = "button3";
-            button3.Size = new Size(112, 34);
+            button3.Size = new Size(90, 27);
             button3.TabIndex = 6;
             button3.Text = "Delete";
             button3.UseVisualStyleBackColor = false;
@@ -209,9 +221,10 @@
             button2.FlatAppearance.BorderColor = Color.SaddleBrown;
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(410, 211);
+            button2.Location = new Point(328, 169);
+            button2.Margin = new Padding(2, 2, 2, 2);
             button2.Name = "button2";
-            button2.Size = new Size(112, 34);
+            button2.Size = new Size(90, 27);
             button2.TabIndex = 5;
             button2.Text = "Update";
             button2.UseVisualStyleBackColor = false;
@@ -224,9 +237,10 @@
             button1.FlatAppearance.BorderColor = Color.SaddleBrown;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(410, 153);
+            button1.Location = new Point(328, 122);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(112, 34);
+            button1.Size = new Size(90, 27);
             button1.TabIndex = 4;
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
@@ -236,27 +250,30 @@
             // 
             panel8.Controls.Add(category_Cbb);
             panel8.Controls.Add(label6);
-            panel8.Location = new Point(410, 24);
+            panel8.Location = new Point(328, 19);
+            panel8.Margin = new Padding(2, 2, 2, 2);
             panel8.Name = "panel8";
-            panel8.Size = new Size(258, 43);
+            panel8.Size = new Size(206, 34);
             panel8.TabIndex = 3;
             // 
             // category_Cbb
             // 
             category_Cbb.DisplayMember = "l";
             category_Cbb.FormattingEnabled = true;
-            category_Cbb.Location = new Point(100, 5);
+            category_Cbb.Location = new Point(80, 4);
+            category_Cbb.Margin = new Padding(2, 2, 2, 2);
             category_Cbb.Name = "category_Cbb";
-            category_Cbb.Size = new Size(149, 33);
+            category_Cbb.Size = new Size(120, 28);
             category_Cbb.TabIndex = 3;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label6.Location = new Point(3, 10);
+            label6.Location = new Point(2, 8);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(95, 25);
+            label6.Size = new Size(77, 20);
             label6.TabIndex = 2;
             label6.Text = "Category:";
             // 
@@ -264,9 +281,10 @@
             // 
             panel6.Controls.Add(producer_Txt);
             panel6.Controls.Add(label4);
-            panel6.Location = new Point(23, 144);
+            panel6.Location = new Point(18, 115);
+            panel6.Margin = new Padding(2, 2, 2, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(363, 43);
+            panel6.Size = new Size(290, 34);
             panel6.TabIndex = 2;
             // 
             // producer_Txt
@@ -274,19 +292,21 @@
             producer_Txt.BorderStyle = BorderStyle.FixedSingle;
             producer_Txt.Cursor = Cursors.IBeam;
             producer_Txt.Font = new Font("Segoe UI", 10F);
-            producer_Txt.Location = new Point(111, 4);
+            producer_Txt.Location = new Point(89, 3);
+            producer_Txt.Margin = new Padding(2, 2, 2, 2);
             producer_Txt.Name = "producer_Txt";
             producer_Txt.PlaceholderText = "Nguyen Van A";
-            producer_Txt.Size = new Size(249, 34);
+            producer_Txt.Size = new Size(200, 30);
             producer_Txt.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(14, 9);
+            label4.Location = new Point(11, 7);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(95, 25);
+            label4.Size = new Size(77, 20);
             label4.TabIndex = 0;
             label4.Text = "Producer:";
             // 
@@ -294,9 +314,10 @@
             // 
             panel5.Controls.Add(name_Txt);
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(23, 82);
+            panel5.Location = new Point(18, 66);
+            panel5.Margin = new Padding(2, 2, 2, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(363, 43);
+            panel5.Size = new Size(290, 34);
             panel5.TabIndex = 2;
             // 
             // name_Txt
@@ -304,19 +325,21 @@
             name_Txt.BorderStyle = BorderStyle.FixedSingle;
             name_Txt.Cursor = Cursors.IBeam;
             name_Txt.Font = new Font("Segoe UI", 10F);
-            name_Txt.Location = new Point(111, 4);
+            name_Txt.Location = new Point(89, 3);
+            name_Txt.Margin = new Padding(2, 2, 2, 2);
             name_Txt.Name = "name_Txt";
             name_Txt.PlaceholderText = "Natra Nao Hai";
-            name_Txt.Size = new Size(249, 34);
+            name_Txt.Size = new Size(200, 30);
             name_Txt.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(42, 9);
+            label3.Location = new Point(34, 7);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(67, 25);
+            label3.Size = new Size(55, 20);
             label3.TabIndex = 0;
             label3.Text = "Name:";
             // 
@@ -324,9 +347,10 @@
             // 
             panel4.Controls.Add(channelID_Txt);
             panel4.Controls.Add(label2);
-            panel4.Location = new Point(23, 24);
+            panel4.Location = new Point(18, 19);
+            panel4.Margin = new Padding(2, 2, 2, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(363, 43);
+            panel4.Size = new Size(290, 34);
             panel4.TabIndex = 0;
             // 
             // channelID_Txt
@@ -334,42 +358,47 @@
             channelID_Txt.BorderStyle = BorderStyle.FixedSingle;
             channelID_Txt.Cursor = Cursors.IBeam;
             channelID_Txt.Font = new Font("Segoe UI", 10F);
-            channelID_Txt.Location = new Point(111, 4);
+            channelID_Txt.Location = new Point(89, 3);
+            channelID_Txt.Margin = new Padding(2, 2, 2, 2);
             channelID_Txt.Name = "channelID_Txt";
             channelID_Txt.PlaceholderText = "ABC1234";
-            channelID_Txt.Size = new Size(249, 34);
+            channelID_Txt.Size = new Size(200, 30);
             channelID_Txt.TabIndex = 1;
+            channelID_Txt.TextChanged += channelID_Txt_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(3, 10);
+            label2.Location = new Point(2, 8);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(110, 25);
+            label2.Size = new Size(89, 20);
             label2.TabIndex = 0;
             label2.Text = "Channel ID:";
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.ControlDark;
-            pictureBox1.Location = new Point(721, 52);
+            pictureBox1.Location = new Point(577, 42);
+            pictureBox1.Margin = new Padding(2, 2, 2, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(220, 276);
+            pictureBox1.Size = new Size(176, 221);
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
             // Channel
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
             Controls.Add(pictureBox1);
             Controls.Add(panel3);
             Controls.Add(label1);
             Controls.Add(panel1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Channel";
-            Size = new Size(962, 644);
+            Size = new Size(770, 515);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel3.ResumeLayout(false);

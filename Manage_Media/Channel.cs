@@ -261,5 +261,10 @@ namespace Manage_Media
         {
 
         }
+
+        private void channelID_Txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
