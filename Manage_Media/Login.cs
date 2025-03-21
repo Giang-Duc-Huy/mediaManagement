@@ -57,7 +57,7 @@
         {
             if (Login_TxtBox.Text == "" || Password_TxtBox.Text == "")
             {
-                Notify.ShowMessage("Cần điền đủ chỗ trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Cần điền username và password!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

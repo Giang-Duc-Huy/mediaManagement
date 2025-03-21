@@ -146,7 +146,7 @@
             // 
             message_Lb.AutoSize = true;
             message_Lb.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            message_Lb.Location = new Point(68, 10);
+            message_Lb.Location = new Point(87, 12);
             message_Lb.Name = "message_Lb";
             message_Lb.Size = new Size(76, 30);
             message_Lb.TabIndex = 2;

@@ -126,7 +126,7 @@
     <value>Segoe UI, 16pt, style=Bold</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 84</value>
+    <value>195, 86</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 45</value>
@@ -3620,7 +3620,7 @@
   <data name="pictureBox2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAXdJREFUWEftlr1KA1EQhUNIkfiDvo2illppK4LvYFSCErXxPRQsI8F3ULHwp1Rf
+        DQAACw0B7QfALAAAAXdJREFUWEftlr1KA1EQhUNIkfiDvo2illppK4LvYFSCErXxPRQsI8F3ULHwp1Rf
         QsVOC8Xkk4EJLIe97l5zGzEfDITMmTOHTWCnUvlrAFVgATgETrzss31XVX1SgCXgkTAPwKLOJQFoAT3d
         mINptnV+KIB1oO8LvoAjYAYY95oFjjMBTbumPr8CmAZe3fgDWFbNAGAF+HTtCzClmmiAHTc0drWvAO2M
         vqX9aIArN3sDGtpXgDHg3WcutR8N8Oxm59oLAVz4zJP2osn8+c60F8K0PtPXXmmAGjDvRsY1sFqyTDvA
@@ -3656,7 +3656,7 @@
   <data name="pictureBox3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAASlJREFUWEft1TFKY1EYBWDFZqzHWtJYRdyBWoilNjKNuANdguI6ZgpLcQuKjRbT
+        DQAACw0B7QfALAAAASlJREFUWEft1TFKY1EYBWDFZqzHWtJYRdyBWoilNjKNuANdguI6ZgpLcQuKjRbT
         2NiImxBG1CKF8MmFVwznxUh4N428Dx6E3P/8J83LnZvr9aaEeRzgFm/Nc4P9cpbzVWEBFz53XmYyVw1O
         s3GM48xVgUW8ZtsYL/iR+c6wkU0TrGe+M+xmywQ7me8Ma9kywWrmO2tev8dsGuMhs9VgG+/Z+J9ytpW5
         qvALz9mMf9jL+ZnAEo5w1jyH+Jlzve+peR2Xsdn8OZWnfC7fzeY2xBAnuP7iPihnZabMDnPPVJqrt9zx
