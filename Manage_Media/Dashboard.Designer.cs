@@ -72,6 +72,7 @@
             label2.Size = new Size(38, 46);
             label2.TabIndex = 2;
             label2.Text = "0";
+            label2.Click += new EventHandler(label2_Click);
             // 
             // pictureBox1
             // 
@@ -115,6 +116,7 @@
             label3.Size = new Size(38, 46);
             label3.TabIndex = 2;
             label3.Text = "0";
+            label3.Click += new EventHandler(label3_Click);
             // 
             // pictureBox2
             // 
@@ -158,6 +160,7 @@
             label5.Size = new Size(38, 46);
             label5.TabIndex = 2;
             label5.Text = "0";
+            label5.Click += new EventHandler(label5_Click);
             // 
             // pictureBox3
             // 

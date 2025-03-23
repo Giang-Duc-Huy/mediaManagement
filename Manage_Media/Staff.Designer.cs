@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel8 = new Panel();
@@ -47,14 +48,19 @@
             label2 = new Label();
             delete_Btn = new Button();
             panel4 = new Panel();
+            pictureBox1 = new PictureBox();
+            btnUploadImage = new Button();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
             label1 = new Label();
+            openFileDialog1 = new OpenFileDialog();
             panel1.SuspendLayout();
             panel8.SuspendLayout();
             panel7.SuspendLayout();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -72,7 +78,8 @@
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(delete_Btn);
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(18, 52);
+            panel1.Location = new Point(16, 52);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(655, 234);
             panel1.TabIndex = 0;
@@ -82,6 +89,7 @@
             flowLayoutPanel1.BackColor = SystemColors.ControlDark;
             flowLayoutPanel1.ForeColor = Color.Violet;
             flowLayoutPanel1.Location = new Point(396, 28);
+            flowLayoutPanel1.Margin = new Padding(2);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(239, 82);
             flowLayoutPanel1.TabIndex = 11;
@@ -91,14 +99,16 @@
             panel8.Controls.Add(address_Txt);
             panel8.Controls.Add(label5);
             panel8.Location = new Point(15, 180);
+            panel8.Margin = new Padding(2);
             panel8.Name = "panel8";
-            panel8.Size = new Size(366, 33);
+            panel8.Size = new Size(366, 32);
             panel8.TabIndex = 6;
             // 
             // address_Txt
             // 
             address_Txt.BorderStyle = BorderStyle.FixedSingle;
             address_Txt.Location = new Point(88, 1);
+            address_Txt.Margin = new Padding(2);
             address_Txt.Name = "address_Txt";
             address_Txt.PlaceholderText = "Ho Chi Minh";
             address_Txt.Size = new Size(278, 31);
@@ -110,6 +120,7 @@
             label5.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
             label5.Location = new Point(8, 6);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(74, 21);
             label5.TabIndex = 0;
@@ -117,29 +128,33 @@
             // 
             // clear_Btn
             // 
-            clear_Btn.BackColor = Color.DarkOrange;
+            clear_Btn.BackColor = Color.SandyBrown;
             clear_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             clear_Btn.FlatStyle = FlatStyle.Flat;
-            clear_Btn.Location = new Point(523, 176);
+            clear_Btn.Location = new Point(522, 176);
+            clear_Btn.Margin = new Padding(2);
             clear_Btn.Name = "clear_Btn";
             clear_Btn.Size = new Size(112, 38);
             clear_Btn.TabIndex = 8;
             clear_Btn.Text = "Clear";
             clear_Btn.UseVisualStyleBackColor = false;
+            clear_Btn.Click += clear_Btn_Click;
             // 
             // panel7
             // 
             panel7.Controls.Add(phone_Txt);
             panel7.Controls.Add(label4);
             panel7.Location = new Point(15, 129);
+            panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(366, 33);
+            panel7.Size = new Size(366, 32);
             panel7.TabIndex = 5;
             // 
             // phone_Txt
             // 
             phone_Txt.BorderStyle = BorderStyle.FixedSingle;
             phone_Txt.Location = new Point(88, 1);
+            phone_Txt.Margin = new Padding(2);
             phone_Txt.Name = "phone_Txt";
             phone_Txt.PlaceholderText = "0123456789";
             phone_Txt.Size = new Size(278, 31);
@@ -151,6 +166,7 @@
             label4.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
             label4.Location = new Point(19, 6);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(63, 21);
             label4.TabIndex = 0;
@@ -158,10 +174,11 @@
             // 
             // add_Btn
             // 
-            add_Btn.BackColor = Color.DarkOrange;
+            add_Btn.BackColor = Color.SandyBrown;
             add_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             add_Btn.FlatStyle = FlatStyle.Flat;
             add_Btn.Location = new Point(396, 125);
+            add_Btn.Margin = new Padding(2);
             add_Btn.Name = "add_Btn";
             add_Btn.Size = new Size(112, 38);
             add_Btn.TabIndex = 9;
@@ -173,16 +190,17 @@
             // 
             panel6.Controls.Add(name_Txt);
             panel6.Controls.Add(label3);
-            panel6.Location = new Point(15, 77);
+            panel6.Location = new Point(15, 78);
+            panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(366, 33);
+            panel6.Size = new Size(366, 32);
             panel6.TabIndex = 4;
-            panel6.Paint += panel6_Paint;
             // 
             // name_Txt
             // 
             name_Txt.BorderStyle = BorderStyle.FixedSingle;
             name_Txt.Location = new Point(88, 1);
+            name_Txt.Margin = new Padding(2);
             name_Txt.Name = "name_Txt";
             name_Txt.PlaceholderText = "Nguyen Van A";
             name_Txt.Size = new Size(278, 31);
@@ -194,6 +212,7 @@
             label3.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(22, 6);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(60, 21);
             label3.TabIndex = 0;
@@ -201,34 +220,37 @@
             // 
             // update_Btn
             // 
-            update_Btn.BackColor = Color.DarkOrange;
+            update_Btn.BackColor = Color.SandyBrown;
             update_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             update_Btn.FlatStyle = FlatStyle.Flat;
-            update_Btn.Location = new Point(523, 125);
+            update_Btn.Location = new Point(522, 125);
+            update_Btn.Margin = new Padding(2);
             update_Btn.Name = "update_Btn";
             update_Btn.Size = new Size(112, 38);
             update_Btn.TabIndex = 10;
             update_Btn.Text = "Update";
             update_Btn.UseVisualStyleBackColor = false;
+            update_Btn.Click += update_Btn_Click;
             // 
             // panel5
             // 
             panel5.Controls.Add(staffID_Txt);
             panel5.Controls.Add(label2);
             panel5.Location = new Point(15, 28);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(366, 33);
+            panel5.Size = new Size(366, 32);
             panel5.TabIndex = 3;
             // 
             // staffID_Txt
             // 
             staffID_Txt.BorderStyle = BorderStyle.FixedSingle;
             staffID_Txt.Location = new Point(88, 1);
+            staffID_Txt.Margin = new Padding(2);
             staffID_Txt.Name = "staffID_Txt";
             staffID_Txt.PlaceholderText = "ABC1234";
             staffID_Txt.Size = new Size(278, 31);
             staffID_Txt.TabIndex = 1;
-            staffID_Txt.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
@@ -236,49 +258,90 @@
             label2.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
             label2.Location = new Point(11, 6);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(71, 21);
             label2.TabIndex = 0;
             label2.Text = "Staff ID:";
-            label2.Click += label2_Click;
             // 
             // delete_Btn
             // 
-            delete_Btn.BackColor = Color.DarkOrange;
+            delete_Btn.BackColor = Color.SandyBrown;
             delete_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             delete_Btn.FlatStyle = FlatStyle.Flat;
             delete_Btn.Location = new Point(396, 176);
+            delete_Btn.Margin = new Padding(2);
             delete_Btn.Name = "delete_Btn";
             delete_Btn.Size = new Size(112, 38);
             delete_Btn.TabIndex = 7;
             delete_Btn.Text = "Delete";
             delete_Btn.UseVisualStyleBackColor = false;
+            delete_Btn.Click += delete_Btn_Click;
             // 
             // panel4
             // 
             panel4.BackColor = SystemColors.ActiveBorder;
             panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(pictureBox1);
+            panel4.Controls.Add(btnUploadImage);
             panel4.ForeColor = Color.White;
             panel4.Location = new Point(686, 52);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
             panel4.Size = new Size(253, 234);
             panel4.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ControlLight;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(225, 162);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // btnUploadImage
+            // 
+            btnUploadImage.BackColor = Color.SandyBrown;
+            btnUploadImage.FlatAppearance.BorderColor = Color.SaddleBrown;
+            btnUploadImage.FlatStyle = FlatStyle.Flat;
+            btnUploadImage.Location = new Point(12, 188);
+            btnUploadImage.Margin = new Padding(2);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(225, 38);
+            btnUploadImage.TabIndex = 0;
+            btnUploadImage.Text = "Upload Image";
+            btnUploadImage.UseVisualStyleBackColor = false;
+            btnUploadImage.Click += btnUploadImage_Click;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(dataGridView1);
             panel2.ForeColor = Color.White;
-            panel2.Location = new Point(18, 304);
+            panel2.Location = new Point(16, 304);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(923, 325);
+            panel2.Size = new Size(922, 325);
             panel2.TabIndex = 1;
             // 
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Bottom;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(17, 22);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.GridColor = SystemColors.WindowText;
+            dataGridView1.Location = new Point(18, 22);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(885, 286);
@@ -289,12 +352,17 @@
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(18, 18);
+            label1.Location = new Point(16, 14);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Padding = new Padding(28, 9, 0, 0);
             label1.Size = new Size(152, 46);
             label1.TabIndex = 2;
             label1.Text = "All Staff";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Staff
             // 
@@ -306,6 +374,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             ForeColor = Color.Aquamarine;
+            Margin = new Padding(2);
             Name = "Staff";
             Size = new Size(962, 644);
             panel1.ResumeLayout(false);
@@ -317,6 +386,8 @@
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -346,5 +417,8 @@
         private Button add_Btn;
         private DataGridView dataGridView1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private PictureBox pictureBox1;
+        private Button btnUploadImage;
+        private OpenFileDialog openFileDialog1;
     }
 }
