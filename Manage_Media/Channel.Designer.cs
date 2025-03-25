@@ -54,7 +54,6 @@
             panel4 = new Panel();
             channelID_Txt = new TextBox();
             label2 = new Label();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel3.SuspendLayout();
@@ -64,14 +63,13 @@
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(18, 343);
+            panel1.Location = new Point(16, 343);
             panel1.Name = "panel1";
             panel1.Size = new Size(923, 285);
             panel1.TabIndex = 0;
@@ -91,7 +89,7 @@
             // 
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label1.Location = new Point(18, 18);
+            label1.Location = new Point(16, 18);
             label1.Name = "label1";
             label1.Padding = new Padding(6, 5, 0, 0);
             label1.Size = new Size(152, 50);
@@ -111,18 +109,18 @@
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(18, 52);
+            panel3.Location = new Point(16, 52);
             panel3.Name = "panel3";
-            panel3.Size = new Size(687, 276);
+            panel3.Size = new Size(923, 276);
             panel3.TabIndex = 1;
             // 
             // panel7
             // 
             panel7.Controls.Add(duration_Txt);
             panel7.Controls.Add(label5);
-            panel7.Location = new Point(410, 82);
+            panel7.Location = new Point(556, 82);
             panel7.Name = "panel7";
-            panel7.Size = new Size(258, 43);
+            panel7.Size = new Size(346, 43);
             panel7.TabIndex = 2;
             // 
             // duration_Txt
@@ -133,7 +131,7 @@
             duration_Txt.Location = new Point(100, 4);
             duration_Txt.Name = "duration_Txt";
             duration_Txt.PlaceholderText = "2";
-            duration_Txt.Size = new Size(149, 34);
+            duration_Txt.Size = new Size(243, 34);
             duration_Txt.TabIndex = 1;
             // 
             // label5
@@ -152,14 +150,14 @@
             panel9.Controls.Add(label7);
             panel9.Location = new Point(23, 204);
             panel9.Name = "panel9";
-            panel9.Size = new Size(363, 43);
+            panel9.Size = new Size(497, 43);
             panel9.TabIndex = 8;
             // 
             // schedule_Dtp
             // 
             schedule_Dtp.Location = new Point(111, 7);
             schedule_Dtp.Name = "schedule_Dtp";
-            schedule_Dtp.Size = new Size(249, 31);
+            schedule_Dtp.Size = new Size(383, 31);
             schedule_Dtp.TabIndex = 1;
             // 
             // label7
@@ -179,7 +177,7 @@
             button4.FlatAppearance.BorderColor = Color.SaddleBrown;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = Color.White;
-            button4.Location = new Point(556, 213);
+            button4.Location = new Point(770, 216);
             button4.Name = "button4";
             button4.Size = new Size(112, 34);
             button4.TabIndex = 7;
@@ -194,7 +192,7 @@
             button3.FlatAppearance.BorderColor = Color.SaddleBrown;
             button3.FlatStyle = FlatStyle.Flat;
             button3.ForeColor = Color.White;
-            button3.Location = new Point(556, 153);
+            button3.Location = new Point(770, 153);
             button3.Name = "button3";
             button3.Size = new Size(112, 34);
             button3.TabIndex = 6;
@@ -209,7 +207,7 @@
             button2.FlatAppearance.BorderColor = Color.SaddleBrown;
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(410, 211);
+            button2.Location = new Point(595, 213);
             button2.Name = "button2";
             button2.Size = new Size(112, 34);
             button2.TabIndex = 5;
@@ -224,7 +222,7 @@
             button1.FlatAppearance.BorderColor = Color.SaddleBrown;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(410, 153);
+            button1.Location = new Point(595, 153);
             button1.Name = "button1";
             button1.Size = new Size(112, 34);
             button1.TabIndex = 4;
@@ -236,9 +234,9 @@
             // 
             panel8.Controls.Add(category_Cbb);
             panel8.Controls.Add(label6);
-            panel8.Location = new Point(410, 24);
+            panel8.Location = new Point(556, 24);
             panel8.Name = "panel8";
-            panel8.Size = new Size(258, 43);
+            panel8.Size = new Size(346, 43);
             panel8.TabIndex = 3;
             // 
             // category_Cbb
@@ -247,7 +245,7 @@
             category_Cbb.FormattingEnabled = true;
             category_Cbb.Location = new Point(100, 5);
             category_Cbb.Name = "category_Cbb";
-            category_Cbb.Size = new Size(149, 33);
+            category_Cbb.Size = new Size(243, 33);
             category_Cbb.TabIndex = 3;
             // 
             // label6
@@ -266,7 +264,7 @@
             panel6.Controls.Add(label4);
             panel6.Location = new Point(23, 144);
             panel6.Name = "panel6";
-            panel6.Size = new Size(363, 43);
+            panel6.Size = new Size(497, 43);
             panel6.TabIndex = 2;
             // 
             // producer_Txt
@@ -277,7 +275,7 @@
             producer_Txt.Location = new Point(111, 4);
             producer_Txt.Name = "producer_Txt";
             producer_Txt.PlaceholderText = "Nguyen Van A";
-            producer_Txt.Size = new Size(249, 34);
+            producer_Txt.Size = new Size(383, 34);
             producer_Txt.TabIndex = 1;
             // 
             // label4
@@ -296,7 +294,7 @@
             panel5.Controls.Add(label3);
             panel5.Location = new Point(23, 82);
             panel5.Name = "panel5";
-            panel5.Size = new Size(363, 43);
+            panel5.Size = new Size(497, 43);
             panel5.TabIndex = 2;
             // 
             // name_Txt
@@ -307,7 +305,7 @@
             name_Txt.Location = new Point(111, 4);
             name_Txt.Name = "name_Txt";
             name_Txt.PlaceholderText = "Natra Nao Hai";
-            name_Txt.Size = new Size(249, 34);
+            name_Txt.Size = new Size(383, 34);
             name_Txt.TabIndex = 1;
             // 
             // label3
@@ -326,7 +324,7 @@
             panel4.Controls.Add(label2);
             panel4.Location = new Point(23, 24);
             panel4.Name = "panel4";
-            panel4.Size = new Size(363, 43);
+            panel4.Size = new Size(497, 43);
             panel4.TabIndex = 0;
             // 
             // channelID_Txt
@@ -337,7 +335,7 @@
             channelID_Txt.Location = new Point(111, 4);
             channelID_Txt.Name = "channelID_Txt";
             channelID_Txt.PlaceholderText = "ABC1234";
-            channelID_Txt.Size = new Size(249, 34);
+            channelID_Txt.Size = new Size(383, 34);
             channelID_Txt.TabIndex = 1;
             // 
             // label2
@@ -350,21 +348,11 @@
             label2.TabIndex = 0;
             label2.Text = "Channel ID:";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.ControlDark;
-            pictureBox1.Location = new Point(721, 52);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(220, 276);
-            pictureBox1.TabIndex = 9;
-            pictureBox1.TabStop = false;
-            // 
             // Channel
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
-            Controls.Add(pictureBox1);
             Controls.Add(panel3);
             Controls.Add(label1);
             Controls.Add(panel1);
@@ -385,7 +373,6 @@
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -414,7 +401,6 @@
         private Button button2;
         private Button button1;
         private DateTimePicker schedule_Dtp;
-        private PictureBox pictureBox1;
         private Panel panel9;
         private Label label7;
         private DataGridView dataGridView1;

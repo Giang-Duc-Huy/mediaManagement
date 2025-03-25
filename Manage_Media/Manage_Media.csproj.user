@@ -4,6 +4,9 @@
     <Compile Update="Channel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CircularProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>

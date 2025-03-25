@@ -37,30 +37,44 @@
             label3 = new Label();
             pictureBox2 = new PictureBox();
             label4 = new Label();
-            panel4 = new Panel();
-            label5 = new Label();
-            pictureBox3 = new PictureBox();
-            label6 = new Label();
             panel1 = new Panel();
+            label7 = new Label();
+            panel5 = new Panel();
+            panel6 = new Panel();
+            panel4 = new Panel();
+            panel7 = new Panel();
+            circularProgressBar1 = new CircularProgressBar();
+            circularProgressBar2 = new CircularProgressBar();
+            dataGridView1 = new DataGridView();
+            label5 = new Label();
+            label6 = new Label();
+            panel8 = new Panel();
+            panel9 = new Panel();
+            textBox1 = new TextBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel1.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel4.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             panel2.BackColor = Color.DarkOrange;
             panel2.Controls.Add(label2);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(21, 22);
+            panel2.Location = new Point(19, 20);
             panel2.Name = "panel2";
-            panel2.Size = new Size(242, 153);
+            panel2.Size = new Size(242, 155);
             panel2.TabIndex = 0;
+            panel2.Click += panel2_Click;
             // 
             // label2
             // 
@@ -72,7 +86,7 @@
             label2.Size = new Size(38, 46);
             label2.TabIndex = 2;
             label2.Text = "0";
-            label2.Click += new EventHandler(label2_Click);
+            label2.Click += label2_Click;
             // 
             // pictureBox1
             // 
@@ -101,10 +115,11 @@
             panel3.Controls.Add(label3);
             panel3.Controls.Add(pictureBox2);
             panel3.Controls.Add(label4);
-            panel3.Location = new Point(341, 22);
+            panel3.Location = new Point(19, 22);
             panel3.Name = "panel3";
             panel3.Size = new Size(242, 153);
             panel3.TabIndex = 3;
+            panel3.Click += panel3_Click;
             // 
             // label3
             // 
@@ -116,7 +131,7 @@
             label3.Size = new Size(38, 46);
             label3.TabIndex = 2;
             label3.Text = "0";
-            label3.Click += new EventHandler(label3_Click);
+            label3.Click += label3_Click;
             // 
             // pictureBox2
             // 
@@ -139,67 +154,157 @@
             label4.TabIndex = 0;
             label4.Text = "All Staff";
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(dataGridView1);
+            panel1.Location = new Point(16, 52);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(656, 360);
+            panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            label7.BackColor = SystemColors.Control;
+            label7.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label7.Location = new Point(16, 18);
+            label7.Name = "label7";
+            label7.Padding = new Padding(6, 5, 0, 0);
+            label7.Size = new Size(152, 50);
+            label7.TabIndex = 2;
+            label7.Text = "Dashboard";
+            // 
+            // panel5
+            // 
+            panel5.BackColor = SystemColors.Control;
+            panel5.Controls.Add(panel2);
+            panel5.ForeColor = Color.White;
+            panel5.Location = new Point(16, 439);
+            panel5.Margin = new Padding(2);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(310, 190);
+            panel5.TabIndex = 3;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = SystemColors.Control;
+            panel6.Controls.Add(panel3);
+            panel6.Location = new Point(362, 439);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(310, 190);
+            panel6.TabIndex = 0;
+            // 
             // panel4
             // 
-            panel4.BackColor = Color.DarkOrange;
-            panel4.Controls.Add(label5);
-            panel4.Controls.Add(pictureBox3);
-            panel4.Controls.Add(label6);
-            panel4.Location = new Point(658, 22);
+            panel4.BackColor = SystemColors.Control;
+            panel4.Controls.Add(circularProgressBar2);
+            panel4.ForeColor = Color.BlueViolet;
+            panel4.Location = new Point(705, 354);
             panel4.Name = "panel4";
-            panel4.Size = new Size(242, 153);
+            panel4.Size = new Size(238, 212);
             panel4.TabIndex = 4;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = SystemColors.Control;
+            panel7.Controls.Add(circularProgressBar1);
+            panel7.ForeColor = Color.BlueViolet;
+            panel7.Location = new Point(705, 52);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(238, 212);
+            panel7.TabIndex = 5;
+            // 
+            // circularProgressBar1
+            // 
+            circularProgressBar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            circularProgressBar1.Location = new Point(18, 12);
+            circularProgressBar1.Name = "circularProgressBar1";
+            circularProgressBar1.Progress = 90;
+            circularProgressBar1.Size = new Size(202, 181);
+            circularProgressBar1.TabIndex = 0;
+            circularProgressBar1.Text = "circularProgressBar1";
+            // 
+            // circularProgressBar2
+            // 
+            circularProgressBar2.Location = new Point(18, 18);
+            circularProgressBar2.Name = "circularProgressBar2";
+            circularProgressBar2.Progress = 0;
+            circularProgressBar2.Size = new Size(202, 181);
+            circularProgressBar2.TabIndex = 1;
+            circularProgressBar2.Text = "circularProgressBar2";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(19, 117);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(618, 225);
+            dataGridView1.TabIndex = 1;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 17F);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(197, 107);
+            label5.BackColor = Color.DarkOrange;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label5.ForeColor = Color.GhostWhite;
+            label5.Location = new Point(761, 281);
             label5.Name = "label5";
-            label5.Size = new Size(38, 46);
-            label5.TabIndex = 2;
-            label5.Text = "0";
-            label5.Click += new EventHandler(label5_Click);
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(13, 37);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(68, 74);
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
+            label5.Size = new Size(132, 32);
+            label5.TabIndex = 1;
+            label5.Text = "Upcoming";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(96, 19);
+            label6.BackColor = Color.DarkOrange;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label6.ForeColor = Color.GhostWhite;
+            label6.Location = new Point(770, 582);
             label6.Name = "label6";
-            label6.Size = new Size(139, 30);
-            label6.TabIndex = 0;
-            label6.Text = "All Channels";
+            label6.Size = new Size(114, 32);
+            label6.TabIndex = 2;
+            label6.Text = "Released";
             // 
-            // panel1
+            // panel8
             // 
-            panel1.BackColor = SystemColors.Control;
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Location = new Point(16, 18);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(926, 196);
-            panel1.TabIndex = 0;
+            panel8.BackColor = Color.DarkOrange;
+            panel8.Location = new Point(705, 260);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(238, 67);
+            panel8.TabIndex = 6;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.DarkOrange;
+            panel9.Location = new Point(705, 566);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(238, 67);
+            panel9.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(19, 37);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(618, 31);
+            textBox1.TabIndex = 2;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(panel7);
+            Controls.Add(panel4);
+            Controls.Add(panel6);
+            Controls.Add(panel5);
+            Controls.Add(label7);
             Controls.Add(panel1);
+            Controls.Add(panel8);
+            Controls.Add(panel9);
             Name = "Dashboard";
             Size = new Size(962, 644);
             panel2.ResumeLayout(false);
@@ -208,11 +313,15 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -225,10 +334,19 @@
         private Label label3;
         private PictureBox pictureBox2;
         private Label label4;
-        private Panel panel4;
-        private Label label5;
-        private PictureBox pictureBox3;
-        private Label label6;
         private Panel panel1;
+        private Label label7;
+        private Panel panel5;
+        private Panel panel6;
+        private Panel panel4;
+        private Panel panel7;
+        private CircularProgressBar circularProgressBar2;
+        private CircularProgressBar circularProgressBar1;
+        private DataGridView dataGridView1;
+        private Label label6;
+        private Label label5;
+        private Panel panel8;
+        private TextBox textBox1;
+        private Panel panel9;
     }
 }

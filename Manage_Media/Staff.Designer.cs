@@ -128,7 +128,7 @@
             // 
             // clear_Btn
             // 
-            clear_Btn.BackColor = Color.SandyBrown;
+            clear_Btn.BackColor = Color.DarkOrange;
             clear_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             clear_Btn.FlatStyle = FlatStyle.Flat;
             clear_Btn.Location = new Point(522, 176);
@@ -174,7 +174,7 @@
             // 
             // add_Btn
             // 
-            add_Btn.BackColor = Color.SandyBrown;
+            add_Btn.BackColor = Color.DarkOrange;
             add_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             add_Btn.FlatStyle = FlatStyle.Flat;
             add_Btn.Location = new Point(396, 125);
@@ -220,7 +220,7 @@
             // 
             // update_Btn
             // 
-            update_Btn.BackColor = Color.SandyBrown;
+            update_Btn.BackColor = Color.DarkOrange;
             update_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             update_Btn.FlatStyle = FlatStyle.Flat;
             update_Btn.Location = new Point(522, 125);
@@ -266,7 +266,7 @@
             // 
             // delete_Btn
             // 
-            delete_Btn.BackColor = Color.SandyBrown;
+            delete_Btn.BackColor = Color.DarkOrange;
             delete_Btn.FlatAppearance.BorderColor = Color.SaddleBrown;
             delete_Btn.FlatStyle = FlatStyle.Flat;
             delete_Btn.Location = new Point(396, 176);
@@ -304,7 +304,7 @@
             // 
             // btnUploadImage
             // 
-            btnUploadImage.BackColor = Color.SandyBrown;
+            btnUploadImage.BackColor = Color.DarkOrange;
             btnUploadImage.FlatAppearance.BorderColor = Color.SaddleBrown;
             btnUploadImage.FlatStyle = FlatStyle.Flat;
             btnUploadImage.Location = new Point(12, 188);
@@ -334,7 +334,7 @@
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
@@ -352,7 +352,7 @@
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(16, 14);
+            label1.Location = new Point(16, 18);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Padding = new Padding(28, 9, 0, 0);
