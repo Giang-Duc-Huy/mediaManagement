@@ -13,7 +13,7 @@ namespace Manage_Media
 {
     public partial class Dashboard : UserControl
     {
-
+        private DateTime lastUpdateTime = DateTime.MinValue;
         public delegate void FilterAppliedEventHandler(object sender, List<Channel.AllChannel> filteredData);
         public event FilterAppliedEventHandler FilterApplied;
         private string channelsFilePath = "channels.json";
@@ -37,6 +37,7 @@ namespace Manage_Media
 
             // Đăng ký sự kiện cho các control
             WireUpEvents();
+            UpdateProgressBars();
         }
         private void InitializeTimer()
         {
@@ -47,15 +48,87 @@ namespace Manage_Media
         }
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            // Chỉ tải lại dữ liệu khi cần thiết
-            var lastWriteTime = File.GetLastWriteTime(channelsFilePath);
-            if (lastWriteTime > lastUpdateTime)
+            DateTime channelsLastWrite = File.GetLastWriteTime(channelsFilePath);
+            DateTime staffLastWrite = File.GetLastWriteTime(staffFilePath);
+            DateTime maxLastWrite = new[] { channelsLastWrite, staffLastWrite }.Max();
+
+            if (maxLastWrite > lastUpdateTime)
             {
                 ReloadData();
-                lastUpdateTime = lastWriteTime;
+                UpdateProgressBars();
+                lastUpdateTime = maxLastWrite;
             }
         }
-        private DateTime lastUpdateTime = DateTime.MinValue;
+        private (int upcomingCount, int releasedCount, int totalCount) CalculateChannelStatus()
+        {
+            DateTime currentTime = DateTime.Now;
+            int total = channels.Count;
+            int upcoming = channels.Count(c => c.Schedule > currentTime);
+            int released = total - upcoming;
+
+            return (upcoming, released, total);
+        }
+        private void UpdateProgressBars()
+        {
+            var (upcoming, released, total) = CalculateChannelStatus();
+
+            if (total > 0)
+            {
+                // Tính phần trăm
+                int upcomingPercentage = (int)((upcoming * 100f) / total);
+                int releasedPercentage = (int)((released * 100f) / total);
+
+                // Cập nhật UI - sử dụng Invoke nếu cần thiết
+                if (circularProgressBar1.InvokeRequired || circularProgressBar2.InvokeRequired)
+                {
+                    this.Invoke((MethodInvoker)delegate {
+                        UpdateProgressBarValues(upcomingPercentage, releasedPercentage, upcoming, released);
+                    });
+                }
+                else
+                {
+                    UpdateProgressBarValues(upcomingPercentage, releasedPercentage, upcoming, released);
+                }
+            }
+            else
+            {
+                // Nếu không có kênh nào, đặt giá trị về 0
+                if (circularProgressBar1.InvokeRequired || circularProgressBar2.InvokeRequired)
+                {
+                    this.Invoke((MethodInvoker)delegate {
+                        circularProgressBar1.Progress = 0;
+                        circularProgressBar2.Progress = 0;
+                        circularProgressBar1.Text = "0%";
+                        circularProgressBar2.Text = "0%";
+                    });
+                }
+                else
+                {
+                    circularProgressBar1.Progress = 0;
+                    circularProgressBar2.Progress = 0;
+                    circularProgressBar1.Text = "0%";
+                    circularProgressBar2.Text = "0%";
+                }
+            }
+        }
+
+        private void UpdateProgressBarValues(int upcomingPercentage, int releasedPercentage, int upcomingCount, int releasedCount)
+        {
+            // Cập nhật cho CircularProgressBar1 (Upcoming)
+            circularProgressBar1.Progress = upcomingPercentage;
+            circularProgressBar1.Text = $"{upcomingPercentage}%";
+            // Removed ToolTipText as it does not exist in CircularProgressBar
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(circularProgressBar1, $"{upcomingCount} Upcoming");
+
+            // Cập nhật cho CircularProgressBar2 (Released)
+            circularProgressBar2.Progress = releasedPercentage;
+            circularProgressBar2.Text = $"{releasedPercentage}%";
+            // Removed ToolTipText as it does not exist in CircularProgressBar
+            ToolTip toolTip2 = new ToolTip();
+            toolTip2.SetToolTip(circularProgressBar2, $"{releasedCount} Released");
+        }
+
         private void WireUpEvents()
         {
             searchTextBox.TextChanged += SearchTextBox_TextChanged;
@@ -140,6 +213,7 @@ namespace Manage_Media
 
                     // Cập nhật ComboBox thể loại
                     UpdateCategoryFilterComboBox();
+                    UpdateProgressBars();
 
                     // Cập nhật DataGridView ngay lập tức
                     if (dataGridView1.InvokeRequired)
@@ -171,7 +245,6 @@ namespace Manage_Media
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void OnFilterApplied(object sender, List<Channel.AllChannel> filteredData)
         {
             if (dataGridView1.InvokeRequired)
@@ -286,8 +359,8 @@ namespace Manage_Media
         private void LoadData()
 
         {
-                int totalChannels = 0;
-                int totalStaff = 0;
+            int totalChannels = 0;
+            int totalStaff = 0;
 
             // Load channels data
             if (File.Exists(channelsFilePath))
@@ -306,48 +379,46 @@ namespace Manage_Media
                 }
             }
 
-                // Load staff data
-                if (File.Exists(staffFilePath))
+            // Load staff data
+            if (File.Exists(staffFilePath))
+            {
+                try
                 {
-                    try
-                    {
-                        string jsonData = File.ReadAllText(staffFilePath);
-                        List<Staff.AllStaff> staff = JsonConvert.DeserializeObject<List<Staff.AllStaff>>(jsonData);
-                        totalStaff = staff?.Count ?? 0;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error loading staff: " + ex.Message);
-                    }
-
+                    string jsonData = File.ReadAllText(staffFilePath);
+                    List<Staff.AllStaff> staff = JsonConvert.DeserializeObject<List<Staff.AllStaff>>(jsonData);
+                    totalStaff = staff?.Count ?? 0;
                 }
-
-                // Update UI
-                // Update UI
-                if (label2.InvokeRequired || label3.InvokeRequired)
+                catch (Exception ex)
                 {
-                    this.Invoke((MethodInvoker)delegate {
-                        label2.Text = totalChannels.ToString();
-                        label3.Text = totalStaff.ToString();
-                    });
-                }
-                else
-                {
-                    label2.Text = totalChannels.ToString();
-                    label3.Text = totalStaff.ToString();
+                    Console.WriteLine("Error loading staff: " + ex.Message);
                 }
 
             }
-        
+            // Update UI
+            if (label2.InvokeRequired || label3.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate {
+                    label2.Text = totalChannels.ToString();
+                    label3.Text = totalStaff.ToString();
+                });
+            }
+            else
+            {
+                label2.Text = totalChannels.ToString();
+                label3.Text = totalStaff.ToString();
+            }
+
+        }
+
 
         private void label2_Click(object sender, EventArgs e)
         {
-           Notify.ShowMessage("Số lượng:" + label2.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Số lượng kênh: " + label2.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Notify.ShowMessage("Số lượng nhân viên:" + label3.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Số lượng nhân viên: " + label3.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void panel2_Click(object sender, EventArgs e)
         {
@@ -363,12 +434,14 @@ namespace Manage_Media
 
         private void circularProgressBar1_Click(object sender, EventArgs e)
         {
-
+            DataShow dts = new DataShow("upcoming");
+            dts.ShowDialog();
         }
 
         private void circularProgressBar2_Click(object sender, EventArgs e)
         {
-
+            DataShow dts = new DataShow("shown");
+            dts.ShowDialog();
         }
     }
 }

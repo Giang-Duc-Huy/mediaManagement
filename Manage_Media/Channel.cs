@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 using static Manage_Media.Channel;
 
@@ -54,6 +55,17 @@ namespace Manage_Media
             category_Cbb.SelectedIndex = -1;
             schedule_Dtp.Value = DateTime.Now;
             CurrentChannel = new AllChannel();
+        }
+        private bool IsDuplicateID(string newID)
+        {
+            foreach (AllChannel channel in channels)
+            {
+                if (channel.ID == newID)
+                {
+                    return true; // ID đã tồn tại
+                }
+            }
+            return false; // ID hợp lệ, không bị trùng
         }
         public void SaveData()
         {
@@ -133,40 +145,53 @@ namespace Manage_Media
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(channelID_Txt.Text) ||
-                string.IsNullOrWhiteSpace(name_Txt.Text) ||
-                string.IsNullOrWhiteSpace(producer_Txt.Text) ||
-                category_Cbb.SelectedIndex == -1)
+            string id = channelID_Txt.Text;
+            string name = name_Txt.Text;
+            string category = category_Cbb.SelectedItem?.ToString() ?? string.Empty;
+            DateTime schedule = schedule_Dtp.Value; // Nếu có DateTimePicker
+
+            // Kiểm tra nhập liệu trước khi gọi addChannel()
+            if (string.IsNullOrWhiteSpace(id) ||
+                string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(category))
             {
-                Notify.ShowMessage("Cần điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Cần điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Kiểm tra Duration có hợp lệ không
             if (!int.TryParse(duration_Txt.Text, out int duration) || duration <= 0)
             {
-                Notify.ShowMessage("Duration phải là số dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Duration phải là số nguyên dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Gán dữ liệu vào CurrentChannel
-            CurrentChannel = new AllChannel
+            addChannel(id, name, duration, category, schedule);
+        }
+
+        private void addChannel(string id, string name, int duration, string category, DateTime schedule)
+        {
+            if (IsDuplicateID(id))
             {
-                ID = channelID_Txt.Text,
-                Name = name_Txt.Text,
-                Producer = producer_Txt.Text,
+                Notify.ShowMessage("ID đã tồn tại! Vui lòng nhập ID khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Dừng lại nếu ID bị trùng
+            }
+
+            // Nếu ID hợp lệ, thêm vào danh sách
+            AllChannel newChannel = new AllChannel
+            {
+                ID = id,
+                Name = name,
                 Duration = duration,
-                Category = category_Cbb.SelectedItem.ToString(),
-                Schedule = schedule_Dtp.Value
+                Category = category,
+                Schedule = schedule
             };
 
-            // Thêm vào danh sách
-            channels.Add(CurrentChannel);
-            SaveData();
-            LoadDgv();
+            channels.Add(newChannel);
+            SaveData(); // Ghi lại danh sách vào file JSON
             Notify.ShowMessage("Thêm kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
+
         public void LoadDgv()
         {
             dataGridView1.DataSource = null;

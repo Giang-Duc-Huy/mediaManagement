@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace Manage_Media
 {
@@ -22,20 +13,27 @@ namespace Manage_Media
         public Staff()
         {
             InitializeComponent();
+            InitializeGenderComboBox();
             LoadData();
             CurrentStaff = new AllStaff();
             LoadDgv();
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        
+
+        private void InitializeGenderComboBox()
+        {
+            genderComboBox.SelectedIndex = 0;
+        }
+
         public void LoadDgv()
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = staffList;
+            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         public void LoadData()
         {
-            // Sử dụng Invoke nếu cần thiết để tránh cross-thread issues
             if (this.InvokeRequired)
             {
                 this.Invoke(new Action(LoadData));
@@ -44,7 +42,6 @@ namespace Manage_Media
 
             try
             {
-                // Kiểm tra và tạo file nếu không tồn tại
                 if (!File.Exists(filepath))
                 {
                     File.WriteAllText(filepath, "[]");
@@ -52,13 +49,11 @@ namespace Manage_Media
                     return;
                 }
 
-                // Đọc file với FileStream để tránh locking issues
-                using (var fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                using (var streamReader = new StreamReader(fileStream))
+                using (FileStream fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (StreamReader streamReader = new StreamReader(fileStream))
                 {
                     string jsonData = streamReader.ReadToEnd();
 
-                    // Deserialize dữ liệu
                     staffList = string.IsNullOrWhiteSpace(jsonData)
                         ? new List<AllStaff>()
                         : JsonConvert.DeserializeObject<List<AllStaff>>(jsonData) ?? new List<AllStaff>();
@@ -81,10 +76,8 @@ namespace Manage_Media
             }
             finally
             {
-                // Kích hoạt sự kiện dữ liệu thay đổi
                 DataChanged?.Invoke();
             }
-
         }
 
         public void SaveData()
@@ -106,7 +99,8 @@ namespace Manage_Media
             name_Txt.Text = string.Empty;
             phone_Txt.Text = string.Empty;
             address_Txt.Text = string.Empty;
-            pictureBox1.Image = null; // Xóa ảnh hiển thị
+            genderComboBox.SelectedIndex = 0;
+            pictureBox1.Image = null;
             CurrentStaff = new AllStaff();
         }
 
@@ -117,19 +111,52 @@ namespace Manage_Media
             public string Name { get; set; }
             public string Phone { get; set; }
             public string Address { get; set; }
-            public string ImagePath { get; set; } // Thuộc tính lưu đường dẫn ảnh
+            public string Gender { get; set; }
+            public string ImagePath { get; set; }
+        }
+
+        private bool ValidateInputs(bool isUpdating = false)
+        {
+            if (string.IsNullOrWhiteSpace(staffID_Txt.Text))
+            {
+                Notify.ShowMessage("Mã nhân viên không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!isUpdating || (isUpdating && staffID_Txt.Text != CurrentStaff.StaffID))
+            {
+                if (staffList.Any(s => s.StaffID == staffID_Txt.Text))
+                {
+                    Notify.ShowMessage("Mã nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(name_Txt.Text))
+            {
+                Notify.ShowMessage("Tên nhân viên không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            string phonePattern = @"^(0|\+84)(\d{9,10})$";
+            if (!Regex.IsMatch(phone_Txt.Text, phonePattern))
+            {
+                Notify.ShowMessage("Số điện thoại không hợp lệ. Phải bắt đầu bằng 0 hoặc +84 và có 9-10 chữ số", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(address_Txt.Text))
+            {
+                Notify.ShowMessage("Địa chỉ không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         private void add_Btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(staffID_Txt.Text) ||
-                string.IsNullOrWhiteSpace(name_Txt.Text) ||
-                string.IsNullOrWhiteSpace(phone_Txt.Text) ||
-                string.IsNullOrWhiteSpace(address_Txt.Text))
-            {
-                Notify.ShowMessage("Cần điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            if (!ValidateInputs()) return;
 
             CurrentStaff = new AllStaff
             {
@@ -137,7 +164,8 @@ namespace Manage_Media
                 Name = name_Txt.Text,
                 Phone = phone_Txt.Text,
                 Address = address_Txt.Text,
-                ImagePath = CurrentStaff.ImagePath // Lưu đường dẫn ảnh
+                Gender = genderComboBox.SelectedItem.ToString(),
+                ImagePath = CurrentStaff.ImagePath
             };
 
             staffList.Add(CurrentStaff);
@@ -149,35 +177,40 @@ namespace Manage_Media
 
         private void update_Btn_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (dataGridView1.SelectedRows.Count == 0 && CurrentStaff == null)
             {
                 Notify.ShowMessage("Vui lòng chọn một nhân viên để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string idToUpdate = Convert.ToString(dataGridView1.SelectedRows[0].Cells["StaffID"].Value);
-            AllStaff staffToUpdate = null;
+            if (!ValidateInputs(true)) return;
 
-            foreach (AllStaff staff in staffList)
-            {
-                if (staff.StaffID == idToUpdate)
-                {
-                    staffToUpdate = staff;
-                    break;
-                }
-            }
+            AllStaff staffToUpdate = staffList.FirstOrDefault(staff => staff.StaffID == CurrentStaff.StaffID);
 
             if (staffToUpdate != null)
             {
+                bool staffIdChanged = staffID_Txt.Text != CurrentStaff.StaffID;
+
                 staffToUpdate.Name = name_Txt.Text;
                 staffToUpdate.Phone = phone_Txt.Text;
                 staffToUpdate.Address = address_Txt.Text;
-                staffToUpdate.ImagePath = CurrentStaff.ImagePath; // Cập nhật đường dẫn ảnh
+                staffToUpdate.Gender = genderComboBox.SelectedItem.ToString();
+                staffToUpdate.ImagePath = CurrentStaff.ImagePath;
+
+                if (staffIdChanged)
+                {
+                    staffToUpdate.StaffID = staffID_Txt.Text;
+                }
 
                 SaveData();
                 LoadDgv();
+
+                if (staffIdChanged)
+                {
+                    CurrentStaff.StaffID = staffID_Txt.Text;
+                }
+
                 Notify.ShowMessage("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearFields();
             }
             else
             {
@@ -198,11 +231,17 @@ namespace Manage_Media
 
             if (staffToDelete != null)
             {
-                staffList.Remove(staffToDelete);
-                SaveData();
-                LoadDgv();
-                Notify.ShowMessage("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearFields();
+                DialogResult confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    staffList.Remove(staffToDelete);
+                    SaveData();
+                    LoadDgv();
+                    Notify.ShowMessage("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearFields();
+                }
             }
             else
             {
@@ -220,34 +259,69 @@ namespace Manage_Media
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                staffID_Txt.Text = row.Cells["StaffID"].Value.ToString();
-                name_Txt.Text = row.Cells["Name"].Value.ToString();
-                phone_Txt.Text = row.Cells["Phone"].Value.ToString();
-                address_Txt.Text = row.Cells["Address"].Value.ToString();
 
-               
-                string imagePath = row.Cells["ImagePath"].Value?.ToString();
-                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                CurrentStaff = new AllStaff
                 {
-                    pictureBox1.Image = Image.FromFile(imagePath);
-                    CurrentStaff.ImagePath = imagePath; // Lưu đường dẫn ảnh vào CurrentStaff
+                    StaffID = row.Cells["StaffID"].Value.ToString(),
+                    Name = row.Cells["Name"].Value.ToString(),
+                    Phone = row.Cells["Phone"].Value.ToString(),
+                    Address = row.Cells["Address"].Value.ToString(),
+                    Gender = row.Cells["Gender"].Value?.ToString(),
+                    ImagePath = row.Cells["ImagePath"].Value?.ToString()
+                };
+
+                staffID_Txt.Text = CurrentStaff.StaffID;
+                name_Txt.Text = CurrentStaff.Name;
+                phone_Txt.Text = CurrentStaff.Phone;
+                address_Txt.Text = CurrentStaff.Address;
+
+                if (!string.IsNullOrEmpty(CurrentStaff.Gender))
+                {
+                    genderComboBox.SelectedItem = CurrentStaff.Gender;
+                }
+                else
+                {
+                    genderComboBox.SelectedIndex = 0;
+                }
+
+                if (!string.IsNullOrEmpty(CurrentStaff.ImagePath) && File.Exists(CurrentStaff.ImagePath))
+                {
+                    pictureBox1.Image = Image.FromFile(CurrentStaff.ImagePath);
                 }
                 else
                 {
                     pictureBox1.Image = null;
-                    CurrentStaff.ImagePath = null;
                 }
             }
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
-            // Mở hộp thoại chọn ảnh
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string imagePath = openFileDialog1.FileName;
-                pictureBox1.Image = Image.FromFile(imagePath); // Hiển thị ảnh lên PictureBox
-                CurrentStaff.ImagePath = imagePath; // Lưu đường dẫn ảnh vào CurrentStaff
+                try
+                {
+                    pictureBox1.Image = Image.FromFile(imagePath);
+                    CurrentStaff.ImagePath = imagePath;
+                }
+                catch (Exception ex)
+                {
+                    Notify.ShowMessage($"Lỗi khi tải ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void phone_Txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+')
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '+' && ((TextBox)sender).Text.Length > 0)
+            {
+                e.Handled = true;
             }
         }
     }

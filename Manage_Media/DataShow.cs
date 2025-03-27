@@ -33,9 +33,41 @@ namespace Manage_Media
             {
                 dataGridView1.DataSource = channels;
             }
-            if (type =="staff")
+            if (type == "staff")
+            {
+                dataGridView1.DataSource = staff;
+            }
+            
+            if (type == "upcoming")
                 {
-                dataGridView1 .DataSource = staff;
+                    DateTime now = DateTime.Now;
+                    List<Channel.AllChannel> channel1 = new List<Channel.AllChannel>();
+
+                    foreach (Channel.AllChannel channel in channels)
+                    {
+                        if (channel.Schedule >= now) // So sánh trực tiếp vì Schedule đã là DateTime
+                        {
+                            channel1.Add(channel);
+                        }
+                    }
+
+                    dataGridView1.DataSource = channel1;
+                }
+            
+            if (type == "shown")
+            {
+                DateTime now = DateTime.Now;
+                List<Channel.AllChannel> channel1 = new List<Channel.AllChannel>();
+
+                foreach (Channel.AllChannel channel in channels)
+                {
+                    if (channel.Schedule < now) // So sánh trực tiếp vì Schedule đã là DateTime
+                    {
+                        channel1.Add(channel);
+                    }
+                }
+
+                dataGridView1.DataSource = channel1;
             }
         }
         private void LoadData1()
@@ -53,6 +85,7 @@ namespace Manage_Media
                     string jsonData = File.ReadAllText(staffFilePath);
                     staff = JsonConvert.DeserializeObject<List<Staff.AllStaff>>(jsonData) ?? new List<Staff.AllStaff>();
                 }
+
             }
             catch 
             {
