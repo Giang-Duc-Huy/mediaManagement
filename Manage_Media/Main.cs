@@ -22,20 +22,6 @@ namespace Manage_Media
             staff1.Visible = false;
             channel1.Visible = false;
         }
-        private void panel1_EnabledChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Dashboard_Button_Click(object sender, EventArgs e)
         {
             dashboard1.Visible = true;
@@ -54,22 +40,11 @@ namespace Manage_Media
             staff1.Visible = false;
             dashboard1.Visible = false;
         }
-
-        private void channel1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Staff_Button_Click(object sender, EventArgs e)
         {
             staff1.Visible = true;
             channel1.Visible = false;
             dashboard1.Visible = false;
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

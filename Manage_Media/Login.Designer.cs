@@ -49,7 +49,7 @@
             label1.BackColor = Color.FromArgb(241, 97, 37);
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Name = "label1";
-            label1.Click += label1_Click;
+
             // 
             // Login_TxtBox
             // 
@@ -66,7 +66,7 @@
             Check_Pass.ForeColor = SystemColors.WindowFrame;
             Check_Pass.Name = "Check_Pass";
             Check_Pass.UseVisualStyleBackColor = false;
-            Check_Pass.CheckedChanged += Check_Pass_CheckedChanged;
+          
             // 
             // Password_TxtBox
             // 
@@ -99,7 +99,6 @@
             resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click_1;
             // 
             // pictureBox2
             // 

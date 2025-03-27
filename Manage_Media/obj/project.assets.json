@@ -61,11 +61,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Medie_Management\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
+      "projectUniqueName": "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
       "projectName": "Manage_Media",
-      "projectPath": "D:\\Medie_Management\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
+      "projectPath": "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\Medie_Management\\OOP_Project\\Manage_Media\\obj\\",
+      "outputPath": "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,7 +97,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
       "SdkAnalysisLevel": "9.0.100"
     },

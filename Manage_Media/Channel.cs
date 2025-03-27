@@ -14,9 +14,13 @@ namespace Manage_Media
     public interface IDisplayable
     {
         void LoadDgv();
+        void SaveData();
+        void LoadData();
+        void ClearFields();
     }
     public partial class Channel : UserControl, IDisplayable
     {
+        public static event Action DataChanged;
         private List<AllChannel> channels = new List<AllChannel>();
         private string filepath = "channels.json";
         public AllChannel CurrentChannel;
@@ -28,12 +32,18 @@ namespace Manage_Media
             LoadDgv();
             LoadCbb();
         }
+
         public void LoadCbb()
         {
-            category_Cbb.Items.Add("Environment");
-            category_Cbb.Items.Add("Politic");
-            category_Cbb.Items.Add("Unemployment");
-            category_Cbb.Items.Add("Weather");
+            category_Cbb.Items.Add("Chính trị");
+            category_Cbb.Items.Add("Giải trí");
+            category_Cbb.Items.Add("Hoạt hình");
+            category_Cbb.Items.Add("Môi trường");
+            category_Cbb.Items.Add("Nấu ăn & Ẩm thực");
+            category_Cbb.Items.Add("Khoa học & Khám phá");
+            category_Cbb.Items.Add("Thời trang & Phong cách sống");
+            category_Cbb.Items.Add("Thời sự & Tin tức");
+            category_Cbb.Items.Add("Thời thiết");
         }
         public void ClearFields()
         {
@@ -45,18 +55,20 @@ namespace Manage_Media
             schedule_Dtp.Value = DateTime.Now;
             CurrentChannel = new AllChannel();
         }
-        private void SaveData()
+        public void SaveData()
         {
             try
             {
                 File.WriteAllText(filepath, JsonConvert.SerializeObject(channels, Formatting.Indented));
+                DataChanged?.Invoke(); // Kích hoạt sự kiện khi dữ liệu thay đổi
             }
             catch (Exception ex)
             {
                 Notify.ShowMessage("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
-        private void LoadData()
+        public void LoadData()
         {
             try
             {
@@ -245,21 +257,6 @@ namespace Manage_Media
         private void button4_Click(object sender, EventArgs e)
         {
             ClearFields();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

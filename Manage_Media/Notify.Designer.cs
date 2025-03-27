@@ -70,7 +70,7 @@
             panel5.ForeColor = SystemColors.ActiveCaptionText;
             panel5.Location = new Point(79, 33);
             panel5.Name = "panel5";
-            panel5.Size = new Size(372, 61);
+            panel5.Size = new Size(388, 61);
             panel5.TabIndex = 4;
             // 
             // notify_Lb

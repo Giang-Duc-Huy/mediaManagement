@@ -14,6 +14,7 @@ namespace Manage_Media
 {
     public partial class Staff : UserControl, IDisplayable
     {
+        public static event Action DataChanged;
         private List<AllStaff> staffList = new List<AllStaff>();
         private string filepath = "staff.json";
         public AllStaff CurrentStaff;
@@ -25,47 +26,81 @@ namespace Manage_Media
             CurrentStaff = new AllStaff();
             LoadDgv();
         }
-
+        
         public void LoadDgv()
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = staffList;
         }
 
-        private void LoadData()
+        public void LoadData()
         {
+            // Sử dụng Invoke nếu cần thiết để tránh cross-thread issues
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(LoadData));
+                return;
+            }
+
             try
             {
+                // Kiểm tra và tạo file nếu không tồn tại
                 if (!File.Exists(filepath))
                 {
-                    File.WriteAllText(filepath, "[]"); // Tạo file mới nếu không tồn tại
+                    File.WriteAllText(filepath, "[]");
+                    staffList = new List<AllStaff>();
+                    return;
                 }
 
-                string jsonData = File.ReadAllText(filepath);
-                staffList = string.IsNullOrWhiteSpace(jsonData)
-                    ? new List<AllStaff>()
-                    : JsonConvert.DeserializeObject<List<AllStaff>>(jsonData) ?? new List<AllStaff>();
+                // Đọc file với FileStream để tránh locking issues
+                using (var fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (var streamReader = new StreamReader(fileStream))
+                {
+                    string jsonData = streamReader.ReadToEnd();
+
+                    // Deserialize dữ liệu
+                    staffList = string.IsNullOrWhiteSpace(jsonData)
+                        ? new List<AllStaff>()
+                        : JsonConvert.DeserializeObject<List<AllStaff>>(jsonData) ?? new List<AllStaff>();
+                }
+            }
+            catch (JsonException jsonEx)
+            {
+                string errorMsg = $"Lỗi định dạng JSON: {jsonEx.Message}\nFile sẽ được tạo lại.";
+                MessageBox.Show(errorMsg, "Lỗi JSON", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                File.WriteAllText(filepath, "[]");
+                staffList = new List<AllStaff>();
+            }
+            catch (IOException ioEx)
+            {
+                MessageBox.Show($"Lỗi truy cập file: {ioEx.Message}", "Lỗi IO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu JSON: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                staffList = new List<AllStaff>(); // Nếu lỗi, khởi tạo danh sách mới
+                MessageBox.Show($"Lỗi không xác định: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                // Kích hoạt sự kiện dữ liệu thay đổi
+                DataChanged?.Invoke();
+            }
+
         }
 
-        private void SaveData()
+        public void SaveData()
         {
             try
             {
                 File.WriteAllText(filepath, JsonConvert.SerializeObject(staffList, Formatting.Indented));
+                DataChanged?.Invoke();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Lỗi tải dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void ClearFields()
+        public void ClearFields()
         {
             staffID_Txt.Text = string.Empty;
             name_Txt.Text = string.Empty;
@@ -92,7 +127,7 @@ namespace Manage_Media
                 string.IsNullOrWhiteSpace(phone_Txt.Text) ||
                 string.IsNullOrWhiteSpace(address_Txt.Text))
             {
-                MessageBox.Show("Cần điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Cần điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -108,7 +143,7 @@ namespace Manage_Media
             staffList.Add(CurrentStaff);
             SaveData();
             LoadDgv();
-            MessageBox.Show("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
 
@@ -116,7 +151,7 @@ namespace Manage_Media
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một nhân viên để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Vui lòng chọn một nhân viên để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -141,12 +176,12 @@ namespace Manage_Media
 
                 SaveData();
                 LoadDgv();
-                MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Notify.ShowMessage("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
             else
             {
-                MessageBox.Show("Không tìm thấy nhân viên để cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Không tìm thấy nhân viên để cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -154,7 +189,7 @@ namespace Manage_Media
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một nhân viên để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Vui lòng chọn một nhân viên để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -166,12 +201,12 @@ namespace Manage_Media
                 staffList.Remove(staffToDelete);
                 SaveData();
                 LoadDgv();
-                MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Notify.ShowMessage("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
             else
             {
-                MessageBox.Show("Không tìm thấy nhân viên để xóa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Không tìm thấy nhân viên để xóa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
