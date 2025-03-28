@@ -147,12 +147,14 @@ namespace Manage_Media
         {
             string id = channelID_Txt.Text;
             string name = name_Txt.Text;
-            string category = category_Cbb.SelectedItem?.ToString() ?? string.Empty;
+            string category = category_Cbb.SelectedItem.ToString();
+            string producer = producer_Txt.Text;
             DateTime schedule = schedule_Dtp.Value; // Nếu có DateTimePicker
 
             // Kiểm tra nhập liệu trước khi gọi addChannel()
             if (string.IsNullOrWhiteSpace(id) ||
                 string.IsNullOrWhiteSpace(name) ||
+                 string.IsNullOrWhiteSpace(producer) ||
                 string.IsNullOrWhiteSpace(category))
             {
                 Notify.ShowMessage("Cần điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -165,10 +167,10 @@ namespace Manage_Media
                 return;
             }
 
-            addChannel(id, name, duration, category, schedule);
+            addChannel(id, name, duration, producer, category, schedule);
         }
 
-        private void addChannel(string id, string name, int duration, string category, DateTime schedule)
+        private void addChannel(string id, string name, int duration, string producer, string category, DateTime schedule)
         {
             if (IsDuplicateID(id))
             {
@@ -182,12 +184,14 @@ namespace Manage_Media
                 ID = id,
                 Name = name,
                 Duration = duration,
+                Producer = producer,
                 Category = category,
                 Schedule = schedule
             };
 
             channels.Add(newChannel);
             SaveData(); // Ghi lại danh sách vào file JSON
+            LoadDgv();
             Notify.ShowMessage("Thêm kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
