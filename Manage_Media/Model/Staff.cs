@@ -19,6 +19,50 @@ namespace Manage_Media
             LoadDgv();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+        //public class Basedata
+        //{
+        //    [JsonProperty(Order = 1)]
+        //    public string ID { get; set; }
+        //    [JsonProperty(Order = 2)]
+        //    public string Name { get; set; }
+
+
+        //    public virtual void SaveToJson<T>(string filePath, List<T> items)
+        //    {
+        //        try
+        //        {
+        //            string jsonData = JsonConvert.SerializeObject(items, Formatting.Indented);
+        //            File.WriteAllText(filePath, jsonData);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+
+        //    public virtual List<T> LoadFromJson<T>(string filePath)
+        //    {
+        //        try
+        //        {
+        //            if (File.Exists(filePath))
+        //            {
+        //                string jsonData = File.ReadAllText(filePath);
+        //                return JsonConvert.DeserializeObject<List<T>>(jsonData) ?? new List<T>();
+        //            }
+        //            return new List<T>();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return new List<T>();
+        //        }
+        //    }
+
+        //    public virtual string GetInfo()
+        //    {
+        //        return $"ID: {ID}, Name: {Name}";
+        //    }
+        //}
 
         private void InitializeGenderComboBox()
         {
@@ -30,6 +74,8 @@ namespace Manage_Media
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = staffList;
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataGridView1.Columns["ID"].DisplayIndex = 0;
+            dataGridView1.Columns["Name"].DisplayIndex = 1;
         }
 
         public void LoadData()
@@ -105,14 +151,16 @@ namespace Manage_Media
         }
 
         [Serializable]
-        public class AllStaff
+        public class AllStaff: Basedata
         {
-            public string StaffID { get; set; }
-            public string Name { get; set; }
-            public string Phone { get; set; }
-            public string Address { get; set; }
-            public string Gender { get; set; }
-            public string ImagePath { get; set; }
+            private string phone;
+            public string Phone { get { return phone; } set { phone = value; }} 
+            private string address;
+            public string Address { get { return phone; } set { address = value; }}
+            private string gender;
+            public string Gender { get { return gender; } set{ gender = value; }}
+            private string img;
+            public string ImagePath { get { return img; } set { img = value; }}
         }
 
         private bool ValidateInputs(bool isUpdating = false)
@@ -123,9 +171,9 @@ namespace Manage_Media
                 return false;
             }
 
-            if (!isUpdating || (isUpdating && staffID_Txt.Text != CurrentStaff.StaffID))
+            if (!isUpdating || (isUpdating && staffID_Txt.Text != CurrentStaff.ID))
             {
-                if (staffList.Any(s => s.StaffID == staffID_Txt.Text))
+                if (staffList.Any(s => s.ID == staffID_Txt.Text))
                 {
                     Notify.ShowMessage("Mã nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -160,7 +208,7 @@ namespace Manage_Media
 
             CurrentStaff = new AllStaff
             {
-                StaffID = staffID_Txt.Text,
+                ID = staffID_Txt.Text,
                 Name = name_Txt.Text,
                 Phone = phone_Txt.Text,
                 Address = address_Txt.Text,
@@ -189,7 +237,7 @@ namespace Manage_Media
 
             foreach (AllStaff staff in staffList)
             {
-                if (staff.StaffID == CurrentStaff.StaffID)
+                if (staff.ID == CurrentStaff.ID)
                 {
                     staffToUpdate = staff;
                     break;
@@ -198,7 +246,7 @@ namespace Manage_Media
 
             if (staffToUpdate != null)
             {
-                bool staffIdChanged = staffID_Txt.Text != CurrentStaff.StaffID;
+                bool staffIdChanged = staffID_Txt.Text != CurrentStaff.ID;
 
                 staffToUpdate.Name = name_Txt.Text;
                 staffToUpdate.Phone = phone_Txt.Text;
@@ -208,7 +256,7 @@ namespace Manage_Media
 
                 if (staffIdChanged)
                 {
-                    staffToUpdate.StaffID = staffID_Txt.Text;
+                    staffToUpdate.ID = staffID_Txt.Text;
                 }
 
                 SaveData();
@@ -216,7 +264,7 @@ namespace Manage_Media
 
                 if (staffIdChanged)
                 {
-                    CurrentStaff.StaffID = staffID_Txt.Text;
+                    CurrentStaff.ID = staffID_Txt.Text;
                 }
 
                 Notify.ShowMessage("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -240,7 +288,7 @@ namespace Manage_Media
 
             foreach (AllStaff staff in staffList)
             {
-                if (staff.StaffID == idToDelete)
+                if (staff.ID == idToDelete)
                 {
                     staffToDelete = staff;
                     break;
@@ -281,7 +329,7 @@ namespace Manage_Media
 
                 CurrentStaff = new AllStaff
                 {
-                    StaffID = row.Cells["StaffID"].Value.ToString(),
+                    ID = row.Cells["StaffID"].Value.ToString(),
                     Name = row.Cells["Name"].Value.ToString(),
                     Phone = row.Cells["Phone"].Value.ToString(),
                     Address = row.Cells["Address"].Value.ToString(),
@@ -289,7 +337,7 @@ namespace Manage_Media
                     ImagePath = row.Cells["ImagePath"].Value?.ToString()
                 };
 
-                staffID_Txt.Text = CurrentStaff.StaffID;
+                staffID_Txt.Text = CurrentStaff.ID;
                 name_Txt.Text = CurrentStaff.Name;
                 phone_Txt.Text = CurrentStaff.Phone;
                 address_Txt.Text = CurrentStaff.Address;

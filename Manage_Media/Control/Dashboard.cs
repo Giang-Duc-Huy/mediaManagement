@@ -527,7 +527,7 @@ namespace Manage_Media
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Notify.ShowMessage("Số lượng kênh: " + label2.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Số lượng bản tin: " + label2.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -544,17 +544,18 @@ namespace Manage_Media
             DataShow dts = new DataShow("staff", "Tổng số nhân viên");
             dts.ShowDialog();
 
+
         }
 
         private void circularProgressBar1_Click(object sender, EventArgs e)
         {
-            DataShow dts = new DataShow("upcoming", "Tổng số kênh sắp chiếu");
+            DataShow dts = new DataShow("upcoming", "Tổng số bản tin sắp chiếu");
             dts.ShowDialog();
         }
 
         private void circularProgressBar2_Click(object sender, EventArgs e)
         {
-            DataShow dts = new DataShow("shown", "Tổng số kênh đã chiếu");
+            DataShow dts = new DataShow("shown", "Tổng số bản tin đã chiếu");
             dts.ShowDialog();
         }
     }

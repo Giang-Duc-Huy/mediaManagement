@@ -139,13 +139,17 @@ namespace Manage_Media
         public class AllChannel : Basedata
         {
             [JsonProperty(Order = 4)]
-            public string Producer { get; set; }
+            private string producer;
+            public string Producer { get { return producer; } set {producer = value; } }
             [JsonProperty(Order = 5)]
-            public int Duration { get; set; }
+            private int duration;
+            public int Duration { get { return duration; } set{ duration = value; } }
             [JsonProperty(Order = 6)]
-            public string Category { get; set; }
+            private string category;
+            public string Category { get { return category; } set { category = value; } }
             [JsonProperty(Order = 7)]
-            public DateTime Schedule { get; set; }
+            private DateTime schedule;
+            public DateTime Schedule { get { return schedule; } set { schedule = value; } }
 
             public override string GetInfo()
             {
@@ -200,7 +204,7 @@ namespace Manage_Media
             channels.Add(newChannel);
             SaveData();
             LoadDgv();
-            MessageBox.Show("Thêm kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Thêm bản tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
 
@@ -216,7 +220,7 @@ namespace Manage_Media
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                Notify.ShowMessage("Vui lòng chọn một kênh để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Vui lòng chọn một bản để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -234,7 +238,7 @@ namespace Manage_Media
 
             SaveData();
             LoadDgv();
-           Notify.ShowMessage("Xóa kênh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           Notify.ShowMessage("Xóa bản tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -246,7 +250,7 @@ namespace Manage_Media
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                Notify.ShowMessage("Vui lòng chọn một kênh để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Vui lòng chọn một bản để cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

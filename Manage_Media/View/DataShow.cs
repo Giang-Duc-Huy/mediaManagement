@@ -40,6 +40,8 @@ namespace Manage_Media
             {
                 label1.Text = id;
                 dataGridView1.DataSource = staff;
+                dataGridView1.Columns["ID"].DisplayIndex = 0;
+                dataGridView1.Columns["Name"].DisplayIndex = 1;
             }
             
             if (type == "upcoming")
