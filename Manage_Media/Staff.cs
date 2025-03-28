@@ -141,13 +141,13 @@ namespace Manage_Media
             string phonePattern = @"^(0|\+84)(\d{9,10})$";
             if (!Regex.IsMatch(phone_Txt.Text, phonePattern))
             {
-                Notify.ShowMessage("Số điện thoại không hợp lệ. Phải bắt đầu bằng 0 hoặc +84 và có 9-10 chữ số", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Số điện thoại phải có 9-10 chữ số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(address_Txt.Text))
             {
-                Notify.ShowMessage("Địa chỉ không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Địa chỉ không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -185,7 +185,16 @@ namespace Manage_Media
 
             if (!ValidateInputs(true)) return;
 
-            AllStaff staffToUpdate = staffList.FirstOrDefault(staff => staff.StaffID == CurrentStaff.StaffID);
+            AllStaff staffToUpdate = null;
+
+            foreach (AllStaff staff in staffList)
+            {
+                if (staff.StaffID == CurrentStaff.StaffID)
+                {
+                    staffToUpdate = staff;
+                    break;
+                }
+            }
 
             if (staffToUpdate != null)
             {
@@ -227,14 +236,24 @@ namespace Manage_Media
             }
 
             string idToDelete = Convert.ToString(dataGridView1.SelectedRows[0].Cells["StaffID"].Value);
-            AllStaff staffToDelete = staffList.FirstOrDefault(staff => staff.StaffID == idToDelete);
+            AllStaff staffToDelete = null;
+
+            foreach (AllStaff staff in staffList)
+            {
+                if (staff.StaffID == idToDelete)
+                {
+                    staffToDelete = staff;
+                    break;
+                }
+            }
+
 
             if (staffToDelete != null)
             {
-                DialogResult confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult confirmResult = Notify.ShowMessage("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-                if (confirmResult == DialogResult.Yes)
+                if (confirmResult == DialogResult.OK)
                 {
                     staffList.Remove(staffToDelete);
                     SaveData();

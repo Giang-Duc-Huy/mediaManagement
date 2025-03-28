@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
+using static Manage_Media.Channel;
 
 namespace Manage_Media
 {
@@ -70,7 +71,8 @@ namespace Manage_Media
         }
         private void UpdateProgressBars()
         {
-            var (upcoming, released, total) = CalculateChannelStatus();
+            
+            (int upcoming, int released, int total) = CalculateChannelStatus();
 
             if (total > 0)
             {
@@ -81,7 +83,8 @@ namespace Manage_Media
                 // Cập nhật UI - sử dụng Invoke nếu cần thiết
                 if (circularProgressBar1.InvokeRequired || circularProgressBar2.InvokeRequired)
                 {
-                    this.Invoke((MethodInvoker)delegate {
+                    this.Invoke((MethodInvoker)delegate
+                    {
                         UpdateProgressBarValues(upcomingPercentage, releasedPercentage, upcoming, released);
                     });
                 }
@@ -95,7 +98,8 @@ namespace Manage_Media
                 // Nếu không có kênh nào, đặt giá trị về 0
                 if (circularProgressBar1.InvokeRequired || circularProgressBar2.InvokeRequired)
                 {
-                    this.Invoke((MethodInvoker)delegate {
+                    this.Invoke((MethodInvoker)delegate
+                    {
                         circularProgressBar1.Progress = 0;
                         circularProgressBar2.Progress = 0;
                         circularProgressBar1.Text = "0%";
@@ -183,12 +187,32 @@ namespace Manage_Media
             categoryFilterComboBox.Items.Clear();
             categoryFilterComboBox.Items.Add("Tất cả thể loại");
 
-            List<string> uniqueCategories = channels
-                .Select(c => c.Category)
-                .Distinct()
-                .OrderBy(c => c)
-                .ToList();
+            List<string> uniqueCategories = new List<string>();
 
+            // Lấy danh mục duy nhất
+            foreach (AllChannel channel in channels)
+            {
+                if (!uniqueCategories.Contains(channel.Category))
+                {
+                    uniqueCategories.Add(channel.Category);
+                }
+            }
+
+            // Sắp xếp danh sách danh mục
+            for (int i = 0; i < uniqueCategories.Count - 1; i++)
+            {
+                for (int j = i + 1; j < uniqueCategories.Count; j++)
+                {
+                    if (string.Compare(uniqueCategories[i], uniqueCategories[j], StringComparison.Ordinal) > 0)
+                    {
+                        string temp = uniqueCategories[i];
+                        uniqueCategories[i] = uniqueCategories[j];
+                        uniqueCategories[j] = temp;
+                    }
+                }
+            }
+
+            // Thêm danh mục vào ComboBox
             foreach (string category in uniqueCategories)
             {
                 categoryFilterComboBox.Items.Add(category);
@@ -208,7 +232,24 @@ namespace Manage_Media
                 if (File.Exists(channelsFilePath))
                 {
                     string jsonData = File.ReadAllText(channelsFilePath);
-                    channels = JsonConvert.DeserializeObject<List<Channel.AllChannel>>(jsonData) ?? new List<Channel.AllChannel>();
+
+                    if (!string.IsNullOrWhiteSpace(jsonData))
+                    {
+                        List<Channel.AllChannel> tempChannels = JsonConvert.DeserializeObject<List<Channel.AllChannel>>(jsonData);
+                        if (tempChannels != null)
+                        {
+                            channels = tempChannels;
+                        }
+                        else
+                        {
+                            channels = new List<Channel.AllChannel>();
+                        }
+                    }
+                    else
+                    {
+                        channels = new List<Channel.AllChannel>();
+                    }
+
                     label2.Text = channels.Count.ToString();
 
                     // Cập nhật ComboBox thể loại
@@ -218,7 +259,7 @@ namespace Manage_Media
                     // Cập nhật DataGridView ngay lập tức
                     if (dataGridView1.InvokeRequired)
                     {
-                        dataGridView1.Invoke(new Action(() =>
+                        dataGridView1.Invoke(new MethodInvoker(delegate
                         {
                             dataGridView1.DataSource = null;
                             dataGridView1.DataSource = channels;
@@ -235,7 +276,24 @@ namespace Manage_Media
                 if (File.Exists(staffFilePath))
                 {
                     string jsonData = File.ReadAllText(staffFilePath);
-                    staff = JsonConvert.DeserializeObject<List<Staff.AllStaff>>(jsonData) ?? new List<Staff.AllStaff>();
+
+                    if (!string.IsNullOrWhiteSpace(jsonData))
+                    {
+                        List<Staff.AllStaff> tempStaff = JsonConvert.DeserializeObject<List<Staff.AllStaff>>(jsonData);
+                        if (tempStaff != null)
+                        {
+                            staff = tempStaff;
+                        }
+                        else
+                        {
+                            staff = new List<Staff.AllStaff>();
+                        }
+                    }
+                    else
+                    {
+                        staff = new List<Staff.AllStaff>();
+                    }
+
                     label3.Text = staff.Count.ToString();
                 }
             }
@@ -245,11 +303,12 @@ namespace Manage_Media
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void OnFilterApplied(object sender, List<Channel.AllChannel> filteredData)
         {
             if (dataGridView1.InvokeRequired)
             {
-                dataGridView1.Invoke(new Action(() =>
+                dataGridView1.Invoke(new MethodInvoker(delegate
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = filteredData;
@@ -262,47 +321,99 @@ namespace Manage_Media
             }
         }
 
+
         private void ApplyFilters()
         {
             try
             {
-                var filteredData = channels.AsEnumerable();
+                List<Channel.AllChannel> filteredData = new List<Channel.AllChannel>();
 
-                // Lọc theo tìm kiếm
-                if (!string.IsNullOrWhiteSpace(searchTextBox.Text))
+                // Duyệt qua danh sách gốc
+                foreach (Channel.AllChannel channel in channels)
                 {
-                    filteredData = filteredData.Where(c =>
-                        c.Name.Contains(searchTextBox.Text, StringComparison.OrdinalIgnoreCase) ||
-                        c.Category.Contains(searchTextBox.Text, StringComparison.OrdinalIgnoreCase) ||
-                        c.Schedule.ToString("dd/MM/yyyy").Contains(searchTextBox.Text));
+                    bool matchesSearch = true;
+                    bool matchesCategory = true;
+                    bool matchesDay = true;
+                    bool matchesMonth = true;
+                    bool matchesYear = true;
+
+                    // Lọc theo tìm kiếm
+                    if (!string.IsNullOrWhiteSpace(searchTextBox.Text))
+                    {
+                        string searchText = searchTextBox.Text.ToLower();
+                        string channelName = channel.Name.ToLower();
+                        string channelCategory = channel.Category.ToLower();
+                        string scheduleDate = channel.Schedule.ToString("dd/MM/yyyy");
+
+                        if (!channelName.Contains(searchText) &&
+                            !channelCategory.Contains(searchText) &&
+                            !scheduleDate.Contains(searchText))
+                        {
+                            matchesSearch = false;
+                        }
+                    }
+
+                    // Lọc theo thể loại
+                    if (categoryFilterComboBox.SelectedIndex > 0)
+                    {
+                        string selectedCategory = categoryFilterComboBox.SelectedItem.ToString();
+                        if (channel.Category != selectedCategory)
+                        {
+                            matchesCategory = false;
+                        }
+                    }
+
+                    // Lọc theo ngày
+                    if (dayComboBox.SelectedIndex > 0)
+                    {
+                        int day;
+                        if (int.TryParse(dayComboBox.SelectedItem.ToString(), out day))
+                        {
+                            if (channel.Schedule.Day != day)
+                            {
+                                matchesDay = false;
+                            }
+                        }
+                    }
+
+                    // Lọc theo tháng
+                    if (monthComboBox.SelectedIndex > 0)
+                    {
+                        int month;
+                        if (int.TryParse(monthComboBox.SelectedItem.ToString(), out month))
+                        {
+                            if (channel.Schedule.Month != month)
+                            {
+                                matchesMonth = false;
+                            }
+                        }
+                    }
+
+                    // Lọc theo năm
+                    if (yearComboBox.SelectedIndex > 0)
+                    {
+                        int year;
+                        if (int.TryParse(yearComboBox.SelectedItem.ToString(), out year))
+                        {
+                            if (channel.Schedule.Year != year)
+                            {
+                                matchesYear = false;
+                            }
+                        }
+                    }
+
+                    // Nếu thỏa mãn tất cả điều kiện lọc, thêm vào danh sách kết quả
+                    if (matchesSearch && matchesCategory && matchesDay && matchesMonth && matchesYear)
+                    {
+                        filteredData.Add(channel);
+                    }
                 }
 
-                // Lọc theo thể loại
-                if (categoryFilterComboBox.SelectedIndex > 0)
+                // Kích hoạt sự kiện với dữ liệu lọc được
+                if (FilterApplied != null)
                 {
-                    string selectedCategory = categoryFilterComboBox.SelectedItem.ToString();
-                    filteredData = filteredData.Where(c => c.Category == selectedCategory);
+                    FilterApplied(this, filteredData);
                 }
-
-                // Lọc theo ngày
-                if (dayComboBox.SelectedIndex > 0 && int.TryParse(dayComboBox.SelectedItem.ToString(), out int day))
-                {
-                    filteredData = filteredData.Where(c => c.Schedule.Day == day);
-                }
-
-                // Lọc theo tháng
-                if (monthComboBox.SelectedIndex > 0 && int.TryParse(monthComboBox.SelectedItem.ToString(), out int month))
-                {
-                    filteredData = filteredData.Where(c => c.Schedule.Month == month);
-                }
-
-                // Lọc theo năm
-                if (yearComboBox.SelectedIndex > 0 && int.TryParse(yearComboBox.SelectedItem.ToString(), out int year))
-                {
-                    filteredData = filteredData.Where(c => c.Schedule.Year == year);
-                }
-
-                FilterApplied?.Invoke(this, filteredData.ToList());
             }
             catch (Exception ex)
             {
@@ -311,8 +422,16 @@ namespace Manage_Media
             }
         }
 
-        private void SearchTextBox_TextChanged(object sender, EventArgs e) => ApplyFilters();
-        private void FilterComboBox_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        private void FilterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
+        }
         //private void FilterButton_Click(object sender, EventArgs e) => ApplyFilters();
 
         private void monthComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -422,25 +541,25 @@ namespace Manage_Media
         }
         private void panel2_Click(object sender, EventArgs e)
         {
-            DataShow dts = new DataShow("channel");
+            DataShow dts = new DataShow("channel", "Tổng số kênh");
             dts.ShowDialog();
         }
         private void panel3_Click(object sender, EventArgs e)
         {
-            DataShow dts = new DataShow("staff");
+            DataShow dts = new DataShow("staff", "Tổng số nhân viên");
             dts.ShowDialog();
 
         }
 
         private void circularProgressBar1_Click(object sender, EventArgs e)
         {
-            DataShow dts = new DataShow("upcoming");
+            DataShow dts = new DataShow("upcoming", "Tổng số kênh sắp chiếu");
             dts.ShowDialog();
         }
 
         private void circularProgressBar2_Click(object sender, EventArgs e)
         {
-            DataShow dts = new DataShow("shown");
+            DataShow dts = new DataShow("shown", "Tổng số kênh đã chiếu");
             dts.ShowDialog();
         }
     }

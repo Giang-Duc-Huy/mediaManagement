@@ -20,26 +20,29 @@ namespace Manage_Media
         private string staffFilePath = "staff.json";
         private List<Channel.AllChannel> channels = new List<Channel.AllChannel>();
         private List<Staff.AllStaff> staff = new List<Staff.AllStaff>();
-        public DataShow(string type)
+        public DataShow(string type, string id)
         {
             InitializeComponent();
             LoadData1();
-            LoadDgv(type);
+            LoadDgv(type, id);
         }
-        private void LoadDgv(string type)
+        private void LoadDgv(string type, string id)
         {
             dataGridView1.DataSource = null;
             if (type == "channel")
             {
+                label1.Text = id;
                 dataGridView1.DataSource = channels;
             }
             if (type == "staff")
             {
+                label1.Text = id;
                 dataGridView1.DataSource = staff;
             }
             
             if (type == "upcoming")
                 {
+                    label1.Text = id;
                     DateTime now = DateTime.Now;
                     List<Channel.AllChannel> channel1 = new List<Channel.AllChannel>();
 
@@ -56,6 +59,7 @@ namespace Manage_Media
             
             if (type == "shown")
             {
+                label1.Text = id;
                 DateTime now = DateTime.Now;
                 List<Channel.AllChannel> channel1 = new List<Channel.AllChannel>();
 

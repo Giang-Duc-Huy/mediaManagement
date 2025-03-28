@@ -31,6 +31,7 @@
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
             button1 = new Button();
+            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -68,6 +69,17 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(834, 37);
+            label1.TabIndex = 2;
+            label1.Text = "label1";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // DataShow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -76,6 +88,7 @@
             ClientSize = new Size(858, 532);
             Controls.Add(button1);
             Controls.Add(panel1);
+            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DataShow";
             Text = "DataShow";
@@ -89,5 +102,6 @@
         private Panel panel1;
         private DataGridView dataGridView1;
         private Button button1;
+        private Label label1;
     }
 }

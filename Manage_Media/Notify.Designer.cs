@@ -66,6 +66,7 @@
             // 
             // panel5
             // 
+            panel5.AllowDrop = true;
             panel5.Controls.Add(notify_Lb);
             panel5.ForeColor = SystemColors.ActiveCaptionText;
             panel5.Location = new Point(79, 33);
