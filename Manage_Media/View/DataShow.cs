@@ -33,6 +33,8 @@ namespace Manage_Media
             {
                 label1.Text = id;
                 dataGridView1.DataSource = channels;
+                dataGridView1.Columns["ID"].DisplayIndex = 0; 
+                dataGridView1.Columns["Name"].DisplayIndex = 1; 
             }
             if (type == "staff")
             {
@@ -48,14 +50,16 @@ namespace Manage_Media
 
                     foreach (Channel.AllChannel channel in channels)
                     {
-                        if (channel.Schedule >= now) // So sánh trực tiếp vì Schedule đã là DateTime
+                        if (channel.Schedule >= now) 
                         {
                             channel1.Add(channel);
                         }
                     }
 
                     dataGridView1.DataSource = channel1;
-                }
+                dataGridView1.Columns["ID"].DisplayIndex = 0; 
+                dataGridView1.Columns["Name"].DisplayIndex = 1; 
+            }
             
             if (type == "shown")
             {
@@ -65,20 +69,21 @@ namespace Manage_Media
 
                 foreach (Channel.AllChannel channel in channels)
                 {
-                    if (channel.Schedule < now) // So sánh trực tiếp vì Schedule đã là DateTime
+                    if (channel.Schedule < now) 
                     {
                         channel1.Add(channel);
                     }
                 }
 
                 dataGridView1.DataSource = channel1;
+                dataGridView1.Columns["ID"].DisplayIndex = 0; 
+                dataGridView1.Columns["Name"].DisplayIndex = 1; 
             }
         }
         private void LoadData1()
         {
             try
             {
-                // Load channels data
                 if (File.Exists(channelsFilePath))
                 {
                     string jsonData = File.ReadAllText(channelsFilePath);

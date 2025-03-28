@@ -312,12 +312,15 @@ namespace Manage_Media
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = filteredData;
+                    
                 }));
             }
             else
             {
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = filteredData;
+                dataGridView1.Columns["ID"].DisplayIndex = 0;
+                dataGridView1.Columns["Name"].DisplayIndex = 1; 
             }
         }
 
@@ -328,7 +331,6 @@ namespace Manage_Media
             {
                 List<Channel.AllChannel> filteredData = new List<Channel.AllChannel>();
 
-                // Duyệt qua danh sách gốc
                 foreach (Channel.AllChannel channel in channels)
                 {
                     bool matchesSearch = true;
@@ -402,7 +404,6 @@ namespace Manage_Media
                         }
                     }
 
-                    // Nếu thỏa mãn tất cả điều kiện lọc, thêm vào danh sách kết quả
                     if (matchesSearch && matchesCategory && matchesDay && matchesMonth && matchesYear)
                     {
                         filteredData.Add(channel);
@@ -421,8 +422,6 @@ namespace Manage_Media
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
             ApplyFilters();
@@ -432,7 +431,6 @@ namespace Manage_Media
         {
             ApplyFilters();
         }
-        //private void FilterButton_Click(object sender, EventArgs e) => ApplyFilters();
 
         private void monthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -481,7 +479,7 @@ namespace Manage_Media
             int totalChannels = 0;
             int totalStaff = 0;
 
-            // Load channels data
+          
             if (File.Exists(channelsFilePath))
 
             {
@@ -497,8 +495,6 @@ namespace Manage_Media
                     Console.WriteLine("Error loading channels: " + ex.Message);
                 }
             }
-
-            // Load staff data
             if (File.Exists(staffFilePath))
             {
                 try
@@ -513,7 +509,6 @@ namespace Manage_Media
                 }
 
             }
-            // Update UI
             if (label2.InvokeRequired || label3.InvokeRequired)
             {
                 this.Invoke((MethodInvoker)delegate {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manage_Media
+namespace Manage_Media.View
 {
-    internal class CircularProgressBar: Control
+    internal class CircularProgressBar : Control
     {
         private int _progress = 0;
         public int Progress
@@ -17,8 +17,8 @@ namespace Manage_Media
 
         public CircularProgressBar()
         {
-            this.Size = new Size(100, 100);
-            this.DoubleBuffered = true; // Giúp giảm flicker
+            Size = new Size(100, 100);
+            DoubleBuffered = true; // Giúp giảm flicker
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -27,8 +27,8 @@ namespace Manage_Media
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            int width = this.Width - 10;
-            int height = this.Height - 10;
+            int width = Width - 10;
+            int height = Height - 10;
             Rectangle rect = new Rectangle(5, 5, width, height);
 
             using (Pen penBackground = new Pen(Color.LightGray, 10))

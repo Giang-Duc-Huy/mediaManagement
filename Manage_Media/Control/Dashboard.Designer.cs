@@ -1,4 +1,6 @@
-﻿namespace Manage_Media
+﻿using Manage_Media.View;
+
+namespace Manage_Media
 {
     partial class Dashboard
     {

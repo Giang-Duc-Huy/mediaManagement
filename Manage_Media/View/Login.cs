@@ -25,13 +25,10 @@ namespace Manage_Media
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "account.json");
                 if (!File.Exists(filePath))
                 {
-                    // Nếu file không tồn tại, tạo mới với danh sách rỗng
                     File.WriteAllText(filePath, "{\"Accounts\": []}");
                 }
 
                 string jsonData = File.ReadAllText(filePath);
-
-                // Đọc dữ liệu JSON từ file
                 AccountData accountData = JsonSerializer.Deserialize<AccountData>(jsonData);
 
                 if (accountData == null || accountData.Accounts == null)
@@ -43,7 +40,7 @@ namespace Manage_Media
             }
             catch (Exception ex)
             {
-                Notify.ShowMessage($"Lỗi khi đọc file account.json: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage($"Lỗi khi đọc file account.json: {ex.Message}", "ThAông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new List<Account>();
             }
         }

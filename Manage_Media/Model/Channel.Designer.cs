@@ -191,7 +191,7 @@
             button3.FlatAppearance.BorderColor = Color.SaddleBrown;
             button3.FlatStyle = FlatStyle.Flat;
             button3.ForeColor = Color.White;
-            button3.Location = new Point(770, 153);
+            button3.Location = new Point(770, 173);
             button3.Name = "button3";
             button3.Size = new Size(112, 34);
             button3.TabIndex = 6;
@@ -221,7 +221,7 @@
             button1.FlatAppearance.BorderColor = Color.SaddleBrown;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(595, 153);
+            button1.Location = new Point(595, 173);
             button1.Name = "button1";
             button1.Size = new Size(112, 34);
             button1.TabIndex = 4;

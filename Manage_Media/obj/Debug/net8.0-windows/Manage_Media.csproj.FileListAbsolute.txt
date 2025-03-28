@@ -121,7 +121,6 @@ D:\Medie_Management - Copy\OOP_Project\Manage_Media\bin\Debug\net8.0-windows\ve-
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\bin\Debug\net8.0-windows\vi\Manage_Media.resources.dll
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.csproj.AssemblyReference.cache
-D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.Channel.resources
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.Dashboard.resources
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.Loading.resources
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.Login.resources
@@ -150,3 +149,4 @@ D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Man
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.genruntimeconfig.cache
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\ref\Manage_Media.dll
 D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.DataShow.resources
+D:\Medie_Management - Copy\OOP_Project\Manage_Media\obj\Debug\net8.0-windows\Manage_Media.Basedata.resources
