@@ -13,51 +13,6 @@ namespace Manage_Media
         void ClearFields();
     }
 
-    public class Basedata
-    {
-        [JsonProperty(Order = 1)]
-        public string ID { get; set; }
-        [JsonProperty(Order = 2)]
-        public string Name { get; set; }
-
-
-        public virtual void SaveToJson<T>(string filePath, List<T> items)
-        {
-            try
-            {
-                string jsonData = JsonConvert.SerializeObject(items, Formatting.Indented);
-                File.WriteAllText(filePath, jsonData);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public virtual List<T> LoadFromJson<T>(string filePath)
-        {
-            try
-            {
-                if (File.Exists(filePath))
-                {
-                    string jsonData = File.ReadAllText(filePath);
-                    return JsonConvert.DeserializeObject<List<T>>(jsonData) ?? new List<T>();
-                }
-                return new List<T>();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<T>();
-            }
-        }
-
-        public virtual string GetInfo()
-        {
-            return $"ID: {ID}, Name: {Name}";
-        }
-    }
-
     public partial class Channel : UserControl, IDisplayable
     {
         public static event Action DataChanged;
@@ -73,6 +28,7 @@ namespace Manage_Media
             LoadDgv();
             LoadCbb();
         }
+        
 
         public void LoadCbb()
         {
@@ -98,8 +54,16 @@ namespace Manage_Media
 
         private bool IsDuplicateID(string newID)
         {
-            return channels.Exists(ch => ch.ID == newID);
+            foreach (AllChannel ch in channels)
+            {
+                if (ch.ID == newID)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
+
 
         public void SaveData()
         {
@@ -170,13 +134,13 @@ namespace Manage_Media
                 string.IsNullOrWhiteSpace(producer) ||
                 string.IsNullOrWhiteSpace(category))
             {
-                MessageBox.Show("Cần điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("Cần điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!int.TryParse(duration_Txt.Text, out int duration) || duration <= 0)
             {
-                MessageBox.Show("Duration phải là số nguyên dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify.ShowMessage("Duration phải là số nguyên dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -187,7 +151,7 @@ namespace Manage_Media
         {
             if (IsDuplicateID(id))
             {
-                MessageBox.Show("ID đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify.ShowMessage("ID đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -204,7 +168,7 @@ namespace Manage_Media
             channels.Add(newChannel);
             SaveData();
             LoadDgv();
-            MessageBox.Show("Thêm bản tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Thêm bản tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
 
@@ -238,7 +202,7 @@ namespace Manage_Media
 
             SaveData();
             LoadDgv();
-           Notify.ShowMessage("Xóa bản tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notify.ShowMessage("Xóa bản tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

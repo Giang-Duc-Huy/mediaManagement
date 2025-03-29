@@ -64,11 +64,21 @@ namespace Manage_Media
         {
             DateTime currentTime = DateTime.Now;
             int total = channels.Count;
-            int upcoming = channels.Count(c => c.Schedule > currentTime);
+            int upcoming = 0;
+
+            foreach (AllChannel c in channels)
+            {
+                if (c.Schedule > currentTime)
+                {
+                    upcoming++;
+                }
+            }
+
             int released = total - upcoming;
 
             return (upcoming, released, total);
         }
+
         private void UpdateProgressBars()
         {
             

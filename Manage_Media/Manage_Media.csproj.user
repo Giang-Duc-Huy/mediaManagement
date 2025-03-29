@@ -1,11 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="View\CircularProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Update="Control\Dashboard.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Control\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Model\Channel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Model\Staff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\CircularProgressBar.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="View\DataShow.cs">
       <SubType>Form</SubType>
@@ -13,17 +22,11 @@
     <Compile Update="View\Loading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\Notify.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Model\Staff.cs">
-      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

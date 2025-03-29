@@ -57,6 +57,7 @@ namespace Manage_Media
             label6 = new Label();
             panel8 = new Panel();
             panel9 = new Panel();
+            pictureBox3 = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -67,6 +68,7 @@ namespace Manage_Media
             panel6.SuspendLayout();
             panel4.SuspendLayout();
             panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -80,7 +82,7 @@ namespace Manage_Media
             panel2.Location = new Point(19, 20);
             panel2.Name = "panel2";
             panel2.Size = new Size(242, 155);
-            panel2.TabIndex = 0;
+            panel2.TabIndex = 6;
             panel2.Click += panel2_Click;
             // 
             // label2
@@ -126,7 +128,7 @@ namespace Manage_Media
             panel3.Location = new Point(19, 22);
             panel3.Name = "panel3";
             panel3.Size = new Size(242, 153);
-            panel3.TabIndex = 3;
+            panel3.TabIndex = 7;
             panel3.Click += panel3_Click;
             // 
             // label3
@@ -165,6 +167,7 @@ namespace Manage_Media
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(dayComboBox);
             panel1.Controls.Add(monthComboBox);
             panel1.Controls.Add(yearComboBox);
@@ -184,7 +187,7 @@ namespace Manage_Media
             dayComboBox.Location = new Point(322, 73);
             dayComboBox.Name = "dayComboBox";
             dayComboBox.Size = new Size(93, 38);
-            dayComboBox.TabIndex = 7;
+            dayComboBox.TabIndex = 3;
             // 
             // monthComboBox
             // 
@@ -194,7 +197,7 @@ namespace Manage_Media
             monthComboBox.Location = new Point(421, 73);
             monthComboBox.Name = "monthComboBox";
             monthComboBox.Size = new Size(103, 38);
-            monthComboBox.TabIndex = 6;
+            monthComboBox.TabIndex = 4;
             // 
             // yearComboBox
             // 
@@ -214,7 +217,7 @@ namespace Manage_Media
             categoryFilterComboBox.Location = new Point(21, 72);
             categoryFilterComboBox.Name = "categoryFilterComboBox";
             categoryFilterComboBox.Size = new Size(295, 38);
-            categoryFilterComboBox.TabIndex = 4;
+            categoryFilterComboBox.TabIndex = 2;
             // 
             // searchTextBox
             // 
@@ -223,7 +226,7 @@ namespace Manage_Media
             searchTextBox.Name = "searchTextBox";
             searchTextBox.PlaceholderText = "Nhập từ khóa...";
             searchTextBox.Size = new Size(618, 39);
-            searchTextBox.TabIndex = 2;
+            searchTextBox.TabIndex = 1;
             searchTextBox.TextChanged += SearchTextBox_TextChanged;
             // 
             // dataGridView1
@@ -283,7 +286,7 @@ namespace Manage_Media
             circularProgressBar2.Name = "circularProgressBar2";
             circularProgressBar2.Progress = 0;
             circularProgressBar2.Size = new Size(202, 181);
-            circularProgressBar2.TabIndex = 1;
+            circularProgressBar2.TabIndex = 9;
             circularProgressBar2.Text = "circularProgressBar2";
             circularProgressBar2.Click += circularProgressBar2_Click;
             // 
@@ -303,9 +306,9 @@ namespace Manage_Media
             circularProgressBar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             circularProgressBar1.Location = new Point(18, 12);
             circularProgressBar1.Name = "circularProgressBar1";
-            circularProgressBar1.Progress = 90;
+            circularProgressBar1.Progress = 0;
             circularProgressBar1.Size = new Size(202, 181);
-            circularProgressBar1.TabIndex = 0;
+            circularProgressBar1.TabIndex = 8;
             circularProgressBar1.Text = "circularProgressBar1";
             circularProgressBar1.Click += circularProgressBar1_Click;
             // 
@@ -349,6 +352,17 @@ namespace Manage_Media
             panel9.Size = new Size(238, 67);
             panel9.TabIndex = 7;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = SystemColors.Window;
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox3.Location = new Point(595, 23);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(38, 32);
+            pictureBox3.TabIndex = 6;
+            pictureBox3.TabStop = false;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -379,6 +393,7 @@ namespace Manage_Media
             panel6.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -412,5 +427,6 @@ namespace Manage_Media
         private ComboBox yearComboBox;
         private ComboBox categoryFilterComboBox;
         private Button filterButton;
+        private PictureBox pictureBox3;
     }
 }

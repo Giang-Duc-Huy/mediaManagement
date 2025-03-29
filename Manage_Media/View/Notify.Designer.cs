@@ -58,7 +58,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(23, 33);
+            pictureBox1.Location = new Point(7, 33);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(66, 61);
             pictureBox1.TabIndex = 5;
@@ -69,9 +69,9 @@
             panel5.AllowDrop = true;
             panel5.Controls.Add(notify_Lb);
             panel5.ForeColor = SystemColors.ActiveCaptionText;
-            panel5.Location = new Point(79, 33);
+            panel5.Location = new Point(61, 33);
             panel5.Name = "panel5";
-            panel5.Size = new Size(388, 61);
+            panel5.Size = new Size(406, 61);
             panel5.TabIndex = 4;
             // 
             // notify_Lb

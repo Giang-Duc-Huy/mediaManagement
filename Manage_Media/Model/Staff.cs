@@ -19,50 +19,6 @@ namespace Manage_Media
             LoadDgv();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        //public class Basedata
-        //{
-        //    [JsonProperty(Order = 1)]
-        //    public string ID { get; set; }
-        //    [JsonProperty(Order = 2)]
-        //    public string Name { get; set; }
-
-
-        //    public virtual void SaveToJson<T>(string filePath, List<T> items)
-        //    {
-        //        try
-        //        {
-        //            string jsonData = JsonConvert.SerializeObject(items, Formatting.Indented);
-        //            File.WriteAllText(filePath, jsonData);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-
-        //    public virtual List<T> LoadFromJson<T>(string filePath)
-        //    {
-        //        try
-        //        {
-        //            if (File.Exists(filePath))
-        //            {
-        //                string jsonData = File.ReadAllText(filePath);
-        //                return JsonConvert.DeserializeObject<List<T>>(jsonData) ?? new List<T>();
-        //            }
-        //            return new List<T>();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return new List<T>();
-        //        }
-        //    }
-
-        //    public virtual string GetInfo()
-        //    {
-        //        return $"ID: {ID}, Name: {Name}";
-        //    }
-        //}
 
         private void InitializeGenderComboBox()
         {
@@ -173,11 +129,15 @@ namespace Manage_Media
 
             if (!isUpdating || (isUpdating && staffID_Txt.Text != CurrentStaff.ID))
             {
-                if (staffList.Any(s => s.ID == staffID_Txt.Text))
+                foreach (AllStaff s in staffList)
                 {
-                    Notify.ShowMessage("Mã nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    if (s.ID == staffID_Txt.Text)
+                    {
+                        Notify.ShowMessage("Mã nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
+
             }
 
             if (string.IsNullOrWhiteSpace(name_Txt.Text))
@@ -283,7 +243,7 @@ namespace Manage_Media
                 return;
             }
 
-            string idToDelete = Convert.ToString(dataGridView1.SelectedRows[0].Cells["StaffID"].Value);
+            string idToDelete = Convert.ToString(dataGridView1.SelectedRows[0].Cells["ID"].Value);
             AllStaff staffToDelete = null;
 
             foreach (AllStaff staff in staffList)

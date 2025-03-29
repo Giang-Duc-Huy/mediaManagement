@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj": {}
+    "D:\\Medie_Management - Copy - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj": {}
   },
   "projects": {
-    "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj": {
+    "D:\\Medie_Management - Copy - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
+        "projectUniqueName": "D:\\Medie_Management - Copy - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
         "projectName": "Manage_Media",
-        "projectPath": "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
+        "projectPath": "D:\\Medie_Management - Copy - Copy\\OOP_Project\\Manage_Media\\Manage_Media.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Medie_Management - Copy\\OOP_Project\\Manage_Media\\obj\\",
+        "outputPath": "D:\\Medie_Management - Copy - Copy\\OOP_Project\\Manage_Media\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

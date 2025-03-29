@@ -166,7 +166,7 @@
     <value>296, 39</value>
   </data>
   <data name="Login_TxtBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;Login_TxtBox.Name" xml:space="preserve">
     <value>Login_TxtBox</value>
@@ -226,7 +226,7 @@
     <value>296, 39</value>
   </data>
   <data name="Password_TxtBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;Password_TxtBox.Name" xml:space="preserve">
     <value>Password_TxtBox</value>
@@ -253,7 +253,7 @@
     <value>296, 42</value>
   </data>
   <data name="Login_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="Login_Button.Text" xml:space="preserve">
     <value>Login</value>
@@ -286,7 +286,7 @@
     <value>296, 42</value>
   </data>
   <data name="Exit_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="Exit_Button.Text" xml:space="preserve">
     <value>Exit</value>

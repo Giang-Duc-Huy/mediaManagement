@@ -131,7 +131,7 @@
             duration_Txt.Name = "duration_Txt";
             duration_Txt.PlaceholderText = "2";
             duration_Txt.Size = new Size(243, 34);
-            duration_Txt.TabIndex = 1;
+            duration_Txt.TabIndex = 6;
             // 
             // label5
             // 
@@ -157,7 +157,7 @@
             schedule_Dtp.Location = new Point(111, 7);
             schedule_Dtp.Name = "schedule_Dtp";
             schedule_Dtp.Size = new Size(383, 31);
-            schedule_Dtp.TabIndex = 1;
+            schedule_Dtp.TabIndex = 4;
             // 
             // label7
             // 
@@ -179,7 +179,7 @@
             button4.Location = new Point(770, 216);
             button4.Name = "button4";
             button4.Size = new Size(112, 34);
-            button4.TabIndex = 7;
+            button4.TabIndex = 10;
             button4.Text = "Clear";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
@@ -194,7 +194,7 @@
             button3.Location = new Point(770, 173);
             button3.Name = "button3";
             button3.Size = new Size(112, 34);
-            button3.TabIndex = 6;
+            button3.TabIndex = 9;
             button3.Text = "Delete";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
@@ -209,7 +209,7 @@
             button2.Location = new Point(595, 213);
             button2.Name = "button2";
             button2.Size = new Size(112, 34);
-            button2.TabIndex = 5;
+            button2.TabIndex = 8;
             button2.Text = "Update";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
@@ -224,7 +224,7 @@
             button1.Location = new Point(595, 173);
             button1.Name = "button1";
             button1.Size = new Size(112, 34);
-            button1.TabIndex = 4;
+            button1.TabIndex = 7;
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -245,7 +245,7 @@
             category_Cbb.Location = new Point(100, 5);
             category_Cbb.Name = "category_Cbb";
             category_Cbb.Size = new Size(243, 33);
-            category_Cbb.TabIndex = 3;
+            category_Cbb.TabIndex = 5;
             // 
             // label6
             // 
@@ -275,7 +275,7 @@
             producer_Txt.Name = "producer_Txt";
             producer_Txt.PlaceholderText = "Nguyen Van A";
             producer_Txt.Size = new Size(383, 34);
-            producer_Txt.TabIndex = 1;
+            producer_Txt.TabIndex = 3;
             // 
             // label4
             // 
@@ -305,7 +305,7 @@
             name_Txt.Name = "name_Txt";
             name_Txt.PlaceholderText = "Natra Nao Hai";
             name_Txt.Size = new Size(383, 34);
-            name_Txt.TabIndex = 1;
+            name_Txt.TabIndex = 2;
             // 
             // label3
             // 
